@@ -12,7 +12,7 @@ const req = {
 describe('Todo endpoints - create', () => {
   it('add todo with valid name', async () => {
     const { body, statusCode } = await req.createTodo({ name: 'Anders' });
-    expect(statusCode).toEqual(200);
+    expect(statusCode).toEqual(201);
     expect(body).toHaveProperty('id');
     expect(body).toHaveProperty('name');
     expect(body.name).toBe('Anders');
@@ -37,10 +37,9 @@ describe('Todo endpoints - create', () => {
 describe('Todo endpoints - delete', () => {
   it('delete todo with valid id', async () => {
     const res = await req.createTodo({ name: 'Anders' });
-    expect(res.statusCode).toEqual(200);
-    const { body, statusCode } = await req.deleteTodo(res.body.id);
-    expect(statusCode).toEqual(200);
-    expect(body).toHaveProperty('message');
+    expect(res.statusCode).toEqual(201);
+    const { statusCode } = await req.deleteTodo(res.body.id);
+    expect(statusCode).toEqual(204);
   });
   it('delete todo with non existing todo id', async () => {
     const { statusCode } = await req.deleteTodo(-1);
@@ -64,7 +63,7 @@ describe('Todo endpoints - index', () => {
 describe('Todo endpoints - show', () => {
   it('get todo with valid id', async () => {
     const res = await req.createTodo({ name: 'Anders' });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(201);
     const { body, statusCode } = await req.getTodo(res.body.id);
     expect(statusCode).toEqual(200);
     expect(body).toHaveProperty('id');

@@ -10,7 +10,7 @@ module.exports = {
   create(req, res) {
     const { name } = req.body;
     const user = Todos.add(name);
-    res.status(200).send(user);
+    res.status(201).send(user);
   },
   /**
    * ::TODO::
@@ -21,7 +21,7 @@ module.exports = {
   delete(req, res) {
     const { id } = req.params;
     const success = Todos.delete(id);
-    if (success) res.status(200).send({ message: `Todo with id: ${id} was deleted successfully` });
+    if (success) res.status(204).send();
     else res.status(404).send({ error: `Todo with id: ${id} does not exist!` });
   },
   /**
