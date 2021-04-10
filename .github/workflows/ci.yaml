@@ -12,6 +12,7 @@ env:
 
 jobs:
   tests:
+    name: CI - Tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -30,26 +31,8 @@ jobs:
         JOBS_CONTEXT: ${{ toJSON(job) }}
         STEPS_CONTEXT: ${{ toJSON(steps) }}
       run: echo "$STEPS_CONTEXT, $JOBS_CONTEXT"
-    # - name: Tests
-    #   if: ${{ success() }}
-    #   run: |
-    #     curl --request POST --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' --data '{
-    #       "context": "tests",
-    #       "state": "success",
-    #       "description": "Tests passed",
-    #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-    #     }'
-    # - name: Tests
-    #   if: ${{ failure() }}
-    #   run: |
-    #     curl --request POST --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' --data '{
-    #       "context": "tests",
-    #       "state": "failure",
-    #       "description": "Tests failed",
-    #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-    #     }'
-
   linting:
+    name: CI - Linting
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -62,24 +45,6 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - run: npm run lint
       working-directory: ${{ env.working-directory }}
-    # - name: Linting
-    #   if: ${{ success() }}
-    #   run: |
-    #     curl --request POST --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' --data '{
-    #       "context": "lint",
-    #       "state": "success",
-    #       "description": "Linting passed",
-    #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-    #     }'
-    # - name: Linting
-    #   if: ${{ failure() }}
-    #   run: |
-    #     curl --request POST --url https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' --data '{
-    #       "context": "lint",
-    #       "state": "failure",
-    #       "description": "Linting failed",
-    #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-    #     }'
     - name: Linting job context
       if: always()
       env:
