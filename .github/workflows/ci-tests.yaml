@@ -1,0 +1,25 @@
+name: CI - Test workflow
+
+on:
+  push:
+    branches: [ main, jest ]
+  pull_request:
+    branches: [ main, jest ]
+
+jobs:
+  tests:
+    name: CI - Tests
+    env: 
+      working-directory: ./server
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js v.14
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    # Install dependencies
+    - run: npm ci
+      working-directory: ${{ env.working-directory }}
+    - run: npm test
+      working-directory: ${{ env.working-directory }}
