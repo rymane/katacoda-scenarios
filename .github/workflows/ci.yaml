@@ -12,7 +12,6 @@ env:
 
 jobs:
   tests:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +50,6 @@ jobs:
     #     }'
 
   linting:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
