@@ -1,3 +1,4 @@
+const { describe, expect, it } = require('@jest/globals');
 const request = require('supertest');
 const api = require('../src/api');
 
