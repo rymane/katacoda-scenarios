@@ -1,4 +1,3 @@
-const { describe, expect, it } = require('@jest/globals');
 const request = require('supertest');
 const api = require('../src/api');
 
@@ -47,7 +46,7 @@ describe('Todo endpoints - delete', () => {
   });
   it('delete todo with invalid id type', async () => {
     const { statusCode } = await req.deleteTodo('invalid type');
-    expect(statusCode).toEqual(40000);
+    expect(statusCode).toEqual(400);
   });
 });
 
