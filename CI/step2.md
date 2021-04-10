@@ -20,4 +20,12 @@ Mock functions are also known as "spies", because they let you spy on the behavi
 
 Jest uses a custom resolver for imports in your tests, making it simple to mock any object outside of your test’s scope. You can use mocked imports with the rich Mock Functions API to spy on function calls with readable test syntax."
 
+Get request to mock data
+In order to improve testing speed and efficiency the http request does not have to be made to a real database or local external file(usStates.json). We can create a mock data (“stunt double”) by using the jest module and mock method; jest.mock("./usStates.json", callback function) . Instead of using the real data (usStates.json), we use mock data passed in within the callback function.
+
 ### Why `Supertest`
+
+### Integration testing
+
+Testing multiple functions/units or testing that spans across different pieces of a web app is considered integration testing. Testing express web apis/endpoints or routes is an example of integration testing.
+This blog illustrates how to do integration test on the simple express app, specifically the web apis/endpoints or routes. Before testing the api routes, we isolated all the CRUD operations into a server-routes.js file (like a stand-alone module). The testing file is server-routes.test.js.
