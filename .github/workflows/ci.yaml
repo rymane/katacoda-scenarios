@@ -25,8 +25,9 @@ jobs:
     - name: Test job context
       if: always()
       env:
-        STEPS_CONTEXT: ${{ toJSON(job) }}
-      run: echo "$STEPS_CONTEXT"
+        JOBS_CONTEXT: ${{ toJSON(job) }}
+        STEPS_CONTEXT: ${{ toJSON(steps) }}
+      run: echo "$STEPS_CONTEXT, $JOBS_CONTEXT"
     # - name: Tests
     #   if: ${{ success() }}
     #   run: |
@@ -69,5 +70,6 @@ jobs:
     - name: Linting job context
       if: always()
       env:
-        STEPS_CONTEXT: ${{ toJSON(job) }}
-      run: echo "$STEPS_CONTEXT"
+        JOBS_CONTEXT: ${{ toJSON(job) }}
+        STEPS_CONTEXT: ${{ toJSON(steps) }}
+      run: echo "$STEPS_CONTEXT, $JOBS_CONTEXT"
