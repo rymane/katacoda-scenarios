@@ -6,23 +6,25 @@ env:
   working-directory: ./server
 
 jobs:
+  # Linting job
   linting:
     name: Linting
     runs-on: ubuntu-latest
     steps:
+
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Use Node.js v.14
       uses: actions/setup-node@v1
       with:
         node-version: '14'
-    # Install dependencies
     - name: Install Node.js dependencies
       run: npm ci
       working-directory: ${{ env.working-directory }}
     - name: Run Lint
       run: npm run lint
       working-directory: ${{ env.working-directory }}
+  # Tests job
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -33,7 +35,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
-    # Install dependencies
     - name: Install Node.js dependencies
       run: npm ci
       working-directory: ${{ env.working-directory }}

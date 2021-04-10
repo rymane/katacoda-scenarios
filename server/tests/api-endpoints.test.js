@@ -1,6 +1,21 @@
 const { describe, expect, it } = require('@jest/globals');
+const Todos = require('../src/models/Todos');
 const request = require('supertest');
 const api = require('../src/api');
+
+// eslint-disable-next-line no-undef
+jest.mock('../src/models/Todos');
+
+const mockData = [
+  {
+    id: 0,
+    name: 'First todo'
+  },
+  {
+    id: 1,
+    name: 'Second todo'
+  },
+];
 
 const req = {
   createTodo: (body) => request(api).post('/api/todos').send(body),
@@ -11,11 +26,13 @@ const req = {
 
 describe('Todo endpoints - create', () => {
   it('add todo with valid name', async () => {
-    const { body, statusCode } = await req.createTodo({ name: 'Anders' });
+    const mockUser = { id: 2, name: 'New Todo' };
+    await Todos.add.mockResolvedValue(mockUser);
+    const { body, statusCode } = await req.createTodo({ name: mockUser.name });
     expect(statusCode).toEqual(201);
     expect(body).toHaveProperty('id');
     expect(body).toHaveProperty('name');
-    expect(body.name).toBe('Anders');
+    expect(body.name).toBe(mockUser.name);
   });
   it('add todo with invalid characters in name', async () => {
     const { body, statusCode } = await req.createTodo({ name: '**/(&%#**' });
@@ -36,12 +53,12 @@ describe('Todo endpoints - create', () => {
 
 describe('Todo endpoints - delete', () => {
   it('delete todo with valid id', async () => {
-    const res = await req.createTodo({ name: 'Anders' });
-    expect(res.statusCode).toEqual(201);
-    const { statusCode } = await req.deleteTodo(res.body.id);
+    await Todos.delete.mockResolvedValue(true);
+    const { statusCode } = await req.deleteTodo(mockData[0].id);
     expect(statusCode).toEqual(204);
   });
   it('delete todo with non existing todo id', async () => {
+    await Todos.delete.mockResolvedValue(false);
     const { statusCode } = await req.deleteTodo(-1);
     expect(statusCode).toEqual(404);
   });
@@ -53,24 +70,26 @@ describe('Todo endpoints - delete', () => {
 
 describe('Todo endpoints - index', () => {
   it('get todos', async () => {
+    await Todos.getAll.mockResolvedValue(mockData);
     const { body, statusCode } = await req.getAllTodos();
     expect(statusCode).toEqual(200);
     expect(body).toHaveProperty('todos');
-    expect(body.todos).toHaveLength(1);
+    console.log(body);
+    expect(body.todos).toHaveLength(2);
   });
 });
 
 describe('Todo endpoints - show', () => {
   it('get todo with valid id', async () => {
-    const res = await req.createTodo({ name: 'Anders' });
-    expect(res.statusCode).toEqual(201);
-    const { body, statusCode } = await req.getTodo(res.body.id);
+    await Todos.get.mockResolvedValue(mockData[0]);
+    const { body, statusCode } = await req.getTodo(mockData[0].id);
     expect(statusCode).toEqual(200);
     expect(body).toHaveProperty('id');
     expect(body).toHaveProperty('name');
-    expect(body.name).toBe('Anders');
+    expect(body.name).toBe(mockData[0].name);
   });
   it('get todo with non existing todo id', async () => {
+    await Todos.get.mockResolvedValue(undefined);
     const { statusCode } = await req.getTodo(-1);
     expect(statusCode).toEqual(404);
   });
