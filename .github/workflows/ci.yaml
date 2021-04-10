@@ -46,6 +46,7 @@ jobs:
     #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
     #     }'
     - run: npm run lint
+      if: always()
       working-directory: ${{ env.working-directory }}
     # - name: Linting
     #   if: ${{ success() }}
