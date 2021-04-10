@@ -47,7 +47,7 @@ describe('Todo endpoints - delete', () => {
   });
   it('delete todo with invalid id type', async () => {
     const { statusCode } = await req.deleteTodo('invalid type');
-    expect(statusCode).toEqual(400);
+    expect(statusCode).toEqual(40000);
   });
 });
 

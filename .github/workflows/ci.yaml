@@ -22,6 +22,10 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - run: npm test
       working-directory: ${{ env.working-directory }}
+    - name: Test job context
+      env:
+        STEPS_CONTEXT: ${{ toJSON(job) }}
+      run: echo "$STEPS_CONTEXT"
     # - name: Tests
     #   if: ${{ success() }}
     #   run: |
@@ -60,7 +64,7 @@ jobs:
     #       "description": "Linting failed",
     #       "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
     #     }'
-    - name: Pass steps context
+    - name: Linting job context
       env:
         STEPS_CONTEXT: ${{ toJSON(job) }}
       run: echo "$STEPS_CONTEXT"
