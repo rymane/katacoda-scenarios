@@ -62,5 +62,5 @@ jobs:
     #     }'
     - name: Pass steps context
       env:
-        STEPS_CONTEXT: ${{ toJSON(steps) }}
+        STEPS_CONTEXT: ${{ toJSON(jobs) }}
       run: echo "$STEPS_CONTEXT"
