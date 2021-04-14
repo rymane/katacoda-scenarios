@@ -10,7 +10,7 @@ The project includes the following files:
 - `models/Todos.js`: Defines the todo-list model with the actions `add`, `delete`, `get` and `getAll`.
 - `policies/TodoPolicy.js`: Validates input of the requests. This file exports two functions `validateID` and `validateName`, used in `api.js`.
 
-![Express app file structure](/assets/express-app-structure.JPG)
+![Express app file structure](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/express-app-structure.JPG?raw=true)
 
 **NOTE:** If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here.](https://github.com/nwessman/katacoda-scenarios/tree/express-app) If you decide to follow along locally you get the advantage of being able to access the api (via the browser etc.) and as well set up the github actions in the last step.
 
