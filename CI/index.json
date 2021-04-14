@@ -41,11 +41,9 @@
     }
   },
   "environment": {
-    "uieditorpath": "/root/example",
-    "showide": true,
-    "idePort": 23000,
-    "uilayout": "terminal"
-},
+    "uilayout": "vscode-terminal-split",
+    "uieditorpath": "/root/katacoda-scenarios"
+  },
   "backend": {
     "imageid": "javascript"
   }
