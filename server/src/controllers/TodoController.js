@@ -5,7 +5,7 @@ module.exports = {
    * Add todo.
    * 
    * @param {Request} req The request object.
-   * @param {String} req.body.id The id of the todo.
+   * @param {String} req.body.id The name of the todo.
    * @param {Response} res The response object.
    */
   async create(req, res) {
