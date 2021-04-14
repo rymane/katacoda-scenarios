@@ -9,11 +9,11 @@ jest.mock('../src/models/Todos');
 const mockData = [
   {
     id: 0,
-    name: 'First todo'
+    name: 'First todo',
   },
   {
     id: 1,
-    name: 'Second todo'
+    name: 'Second todo',
   },
 ];
 
