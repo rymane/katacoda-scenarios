@@ -33,7 +33,7 @@ module.exports = {
     }).validate(req.body);
 
     if (error) res.status(400).send({ 
-      error: 'You must provide a valid email address',
+      error: 'You must provide a valid name',
     });
     else next();
   },

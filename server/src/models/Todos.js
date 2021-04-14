@@ -12,8 +12,8 @@
  * @property {number} id - A unique identifier.
  * @property {string} name - The name of the todo.
  */
- const todos = {};
- let nextID = 0;
+const todos = {};
+let nextID = 0;
  
 module.exports = {
   /**

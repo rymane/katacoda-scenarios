@@ -74,7 +74,6 @@ describe('Todo endpoints - index', () => {
     const { body, statusCode } = await req.getAllTodos();
     expect(statusCode).toEqual(200);
     expect(body).toHaveProperty('todos');
-    console.log(body);
     expect(body.todos).toHaveLength(2);
   });
 });
