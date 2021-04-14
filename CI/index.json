@@ -42,6 +42,7 @@
   },
   "environment": {
     "uilayout": "editor-terminal",
+    "uilayout": "vscode-terminal-split",
     "uieditorpath": "/root/katacoda-scenarios"
   },
   "backend": {
