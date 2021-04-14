@@ -1,1 +1,1 @@
-git clone https://github.com/klaraesr/my-application.git
+git clone https://github.com/nwessman/katacoda-scenarios/tree/express-app.git
