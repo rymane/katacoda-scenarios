@@ -4,9 +4,9 @@ module.exports = {
   /**
    * Validate that id is a number and the only parameter given in the url.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
-   * @param {*} next ::TODO::
+   * @param {Request} req The request object.
+   * @param {Response} res The response object.
+   * @param {Function} next The next middleware.
    */
   validateID(req, res, next) {
     const { error, } = Joi.object({
@@ -22,9 +22,9 @@ module.exports = {
    * Validate that name is a string, matches the name regex and is the only
    * parameter given in the request body.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
-   * @param {*} next ::TODO::
+   * @param {Request} req The request object.
+   * @param {Response} res The response object.
+   * @param {Function} next The next middleware.
    */
   validateName(req, res, next) {
     const nameRegex = new RegExp('^[a-zA-ZåäöÅÄÖ 0-9]{5,32}$');

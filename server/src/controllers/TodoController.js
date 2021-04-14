@@ -2,10 +2,11 @@ const Todos = require('../models/Todos');
 
 module.exports = {
   /**
-   * ::TODO::
+   * Add todo.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
+   * @param {Request} req The request object.
+   * @param {String} req.body.id The id of the todo.
+   * @param {Response} res The response object.
    */
   async create(req, res) {
     const { name } = req.body;
@@ -13,10 +14,11 @@ module.exports = {
     res.status(201).send(user);
   },
   /**
-   * ::TODO::
+   * Delete a todo by id.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
+   * @param {Request} req The request object.
+   * @param {int} req.params.id The id of the todo.
+   * @param {Response} res The response object.
    */
    async delete(req, res) {
     const { id } = req.params;
@@ -25,20 +27,21 @@ module.exports = {
     else res.status(404).send({ error: `Todo with id: ${id} does not exist!` });
   },
   /**
-   * ::TODO::
+   * Get all todos.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
+   * @param {Request} req The request object.
+   * @param {Response} res The response object.
    */
   async index(req, res) {
     const todos = await Todos.getAll();
     res.status(200).send({ todos });
   },
   /**
-   * ::TODO::
+   * Get todo by id.
    * 
-   * @param {*} req ::TODO::
-   * @param {*} res ::TODO::
+   * @param {Request} req The request object.
+   * @param {int} req.params.id The id of the todo.
+   * @param {Response} res The response object.
    */
   async show(req, res) {
     const { id } = req.params;
