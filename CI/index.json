@@ -31,14 +31,18 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "courseData": "cloneProject.sh"
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "vscode-terminal-split",
+    "uieditorpath": "/root/katacoda-scenarios"
   },
   "backend": {
     "imageid": "javascript"
