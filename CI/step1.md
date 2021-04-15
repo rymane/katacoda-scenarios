@@ -52,10 +52,13 @@ npm install
 #### 5. Run the application (locally only)
 
 If you are running the tutorial locally on your own machine you can now try to run the application by using this command:
+
 ```
 npm start
 ```
+
 or with debugging turned on:
+
 ```
 SET DEBUG=server:* & npm start
 ```
