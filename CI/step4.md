@@ -49,10 +49,9 @@ The linter will catch a few formatting errors. Let's fix them automatically by r
 
 Run `eslint 'src/**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
 To ease lint execution, we define two new scripts in the file `package.json`. Click on Copy to editor below to add the scripts.
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":"",'>
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":""'>
 "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "eslint 'src/**/*.js' --fix",
-</pre>
+    "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
 
 We can now run `npm run lint`{{execute}} to lint and `npm run lint:fix`{{execute}} to lint and automatically fix errors.
 

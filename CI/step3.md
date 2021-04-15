@@ -74,7 +74,7 @@ describe('Todo endpoints - create', () => {
 ##### Jest keywords:
 - `describe`:
 - `expect`: 
-- `it`:
+- `it(name, fn, timeout)`: Runs a test. The first argument defines the tests name, the second is a function that contains the expectations to test, and the third (optional) is a timeout (in milliseconds) for specifying how long to wait before aborting. Note: The default timeout is 5 seconds.
 
 
 

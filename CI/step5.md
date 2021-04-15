@@ -11,9 +11,9 @@ Finally, create the new file called `CI.yml`: `touch CI.yml`{{execute}}.
 
 In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
 
-```yml
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace">
 name: CI
-```
+</pre>
 
 Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
 
