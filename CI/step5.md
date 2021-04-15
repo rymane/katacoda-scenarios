@@ -1,5 +1,7 @@
 With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github. 
 
+**Note:** The following part needs to be set up with your own Github repository. If you do not want to connect your Github to this Katacoda environment we recommend that you do this part locally on your own machine.
+
 Start by creating a folder in `/katacoda-scenarios/` called `.github` by using the command `mkdir .github`{{execute}}.
 Change directory in to the `.github` folder: `cd .github`{{execute}}
 In the `.github` folder, create a new folder called `workflows`: `mkdir workflows`{{execute}}.
@@ -114,3 +116,16 @@ All job runs in isolation in separate virtual machines. Therefore it is necessar
       working-directory: ${{ env.working-directory }}
 ```
 The only difference is in the last step where we run the tests instead of the linting.
+
+
+The final step is to push the file to your Github repository and it will automaticly start working. You can try pushing dummy changes to your project to see the status of the automatic tests.
+
+To see the status of your Github actions go to the action tab on your Github project.
+![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Action-bar.jpg?raw=true)
+
+Here you can see a list of all your push and pull request and the status of the automatic testing that has been done on these.
+
+![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Actions-workflow.jpg?raw=true)
+
+A green marker means that the tests has passed, a yellow that the tests are still conducted, and a red means that the tests has failed. Click on an instance to get more information on the tests, where it failed and so forth.
+
