@@ -81,7 +81,7 @@ Finally we run the linting.
 
 This will produce the following output when run on Github.
 
-![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg)
+![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
 
 
 Now we define our test job:
