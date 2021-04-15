@@ -1,5 +1,3 @@
-## Express application overview
-
 The application used in this tutorial is a simple Express server, serving a `TODO-list` REST api with 4 api-endpoints.
 The user of this application can simply get, add and delete todos with basic http requests.
 The project includes the following files:
