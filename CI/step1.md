@@ -60,5 +60,5 @@ npm start
 or with debugging turned on:
 
 ```
-SET DEBUG=server:* & npm start
+DEBUG=server:* npm start
 ```
