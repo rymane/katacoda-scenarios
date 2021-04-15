@@ -7,8 +7,8 @@ This tutorial will go through the steps of setting up a pre-built Express applic
 2. Automated testing with `Jest` and `Supertest`
   1. Intro to automated testing `Jest`/ `Supertest`
   2. Show how to write automated mocha tests with `Jest` / `Supertest`
-3. Linting with `Eslint`
-  1. Intro to linting with `Eslint`
+3. Static code analysis (lint) with `Eslint`
+  1. Intro to static code analysis with Eslint
   2. Show how to lint code with `Eslint`
 4. Continous Integration with GitHub Actions
   1. Intro to GitHub actions
