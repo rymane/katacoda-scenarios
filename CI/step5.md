@@ -11,7 +11,7 @@ Finally, create the new file called `CI.yml`: `touch CI.yml`{{execute}}.
 
 In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
 
-<pre class="file" data-filename="github/workflows/CI.yml" data-target="replace">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace">
 name: CI
 </pre>
 

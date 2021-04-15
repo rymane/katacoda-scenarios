@@ -76,6 +76,7 @@ describe('Todo endpoints - create', () => {
 - `expect`: 
 - `it(name, fn, timeout)`: Runs a test. The first argument defines the tests name, the second is a function that contains the expectations to test, and the third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
 
+The Jest API covers much more functionality than included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
 
 
 ### Mocking the data model
