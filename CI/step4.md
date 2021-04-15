@@ -49,8 +49,8 @@ The linter will catch a few formatting errors. Let's fix them automatically by r
 
 Run `eslint 'src/**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
 To ease lint execution, we define two new scripts in the file `package.json`. Click on Copy to editor below to add the scripts.
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='    "insert-lint":"",'>
-    "lint": "eslint 'src/**/*.js'",
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":"",'>
+"lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix",
 </pre>
 
@@ -59,11 +59,8 @@ We can now run `npm run lint`{{execute}} to lint and `npm run lint:fix`{{execute
 #### Custom rules (optional)
 
 ESLint is highly customizable and let's you define custom rules that work alongside the built-in rules. Create a custom rule by updating the `rules` tag in the config file `.eslintrc.json` with the following content. This could be done manually or by clicking on Copy to editor below.
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='    "rules": {
-    }'>
-"rules": { 
-   "quotes": ["error", "double"]
-}</pre>
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"rules": {'>
+"rules": { "quotes": ["error", "double"]</pre>
 
 **Note:** The file `.eslintrc.json` is hidden by default.
 
