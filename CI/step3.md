@@ -21,8 +21,9 @@ We can now run `npm run test`{{execute}} to execute the tests. However, since we
 
 Create a test directory `mkdir tests`{{execute}}  
 Enter the directory `cd tests`{{execute}}  
-Create two files `touch api.test.js request.js`{{execute}}
+Create two files `touch api.test.js`{{execute}}
 
+Click on `Copy to editor` below to add the file `request.js` with the following content to the newly created test directory:
 
 <pre class="file" data-filename="server/tests/request.js" data-target="replace">
 // Import the supertest module and the API server
@@ -38,7 +39,15 @@ module.exports = {
 };
 </pre>
 
-<pre class="file" data-filename="./server/tests/api.test.js" data-target="replace">
+ou may pass an http.Server, or a Function to request() - if the server is not already listening for connections then it is bound to an ephemeral port for you so there is no need to keep track of ports
+
+
+##### Supertest keywords:
+- `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
+
+Click on `Copy to editor` below to add the file `api.test.js` with the following content to the test directory:
+
+<pre class="file" data-filename="server/tests/api.test.js" data-target="replace">
 const { createTodo, deleteTodo, getTodo } = require('./request');
 
 describe('Todo endpoints - create', () => {
@@ -68,24 +77,14 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
-<pre class="file" data-filename="api.test.js" data-target="replace">
-describe('Todo endpoints - create', () => {
-  it('add todo with valid name', async () => {
-    const user = {name: 'New Todo'};
-    const {body, statusCode} = await createTodo(user);
-    expect(statusCode).toEqual(201);
-    expect(body).toHaveProperty('id');
-    expect(body).toHaveProperty('name');
-    expect(body.name).toBe(user.name);
-  });
-});
-</pre>
+##### Jest keywords:
+- `describe`:
+- `expect`: 
+- `it`:
 
 
-Jest keywords: describe, expect, it
-Supertest keywords: request
 
-Jest mocking:
+### Mocking the data model
 
 jest.mock('../src/models/Todos');
 await Todos.add.mockResolvedValue(mockUser);
