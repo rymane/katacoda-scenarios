@@ -9,5 +9,4 @@ This tutorial will go through the steps of setting up a pre-built Express applic
   2. Show how to write automated mocha tests with `Jest` / `Supertest`
 3. Static code analysis with ESLint
 4. Continous Integration with GitHub Actions
-  1. Intro to GitHub actions
-  2. Show how to run automated tests and linting in a CI workflow using GitHub actions.
+  1. Show how to run automated tests and linting in a CI workflow using GitHub actions.

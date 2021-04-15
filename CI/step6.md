@@ -1,30 +1,31 @@
-## Intro Github Actions
+With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github. 
 
-With Github Actions we can easily set up an CI/CD envirnonment where we automate our Software workflow by building, testing and deploying our code right in Github. 
+Start by creating a folder in `/katacoda-scenarios/` called `.github` by using the command `mkdir .github`{{execute}}.
+Change directory in to the `.github` folder: `cd .github`{{execute}}
+In the `.github` folder, create a new folder called `workflows`: `mkdir workflows`{{execute}}.
+Change directory into the `workflows` folder: `cd workflows`{{execute}}
+Finally, create the new file called `CI.yml`: `touch CI.yml`{{execute}}.
 
-Start by creating a folder in `/katacoda-scenarios/` called `.github` by using the command `touch .github`.
-In the `.github`folder create a new folder called `workflows` and there create a new file called `CI.yml`.
-
-In this file we will specify the rules for our automatic testing and linting. We start by defining the name of our action calling it "CI" 
+In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
 
 ```yml
 name: CI
 ```
 
-Then we must choose on which type of Github event we want to run our action. We choose to use on all push and pull request. Here you need to choose what fits your project best. In large projects having full integration tests on every push request can take too much time to be feasible.
+Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
 
 ```yml
 on: [push, pull_request]
 ```
 
-Now we need to specify which directory in our github repository that our CI job is going to run on. We define it with:
+Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
 
 ```yml
 env: 
       working-directory: ./server
 ```
 
-Next is to define the jobs we want to run on each event. We start by creating our linting job.
+Next is to define the jobs we want to run at each event. We start by creating our linting job.
 
 ```yml
 jobs: 
@@ -47,14 +48,14 @@ jobs:
         working-directory: ${{ env.working-directory }}
 ```
 
-We define the job `linting` with a name, what OS it will run on and which steps is going to be performed in this job. On Github you will be able to see the status of each step in the linting job, so it is important to name each step according to its functionality. 
+We define the job `linting` with a name, what OS it will run on, and which steps to perform in this job. On GitHub, you will be able to see each step's status in the linting job, so it is important to name each step according to its functionality.
 
 ```yml
 steps: 
       - name: Chekout repository
         uses: actions/checkout@v2
 ```
-The first step in our job is to checkout the repository so our application will be downloaded to the testing environment. 
+The first step in our job is to checkout the latest version of the repository in the testing environment.
 
 ```yml
  - name: Use Node.js v.14
@@ -62,7 +63,8 @@ The first step in our job is to checkout the repository so our application will 
         with:
           node-version: '14'
 ```
-We then need to set up Node and which version we want to use.
+
+We then need to set up Node and define what version to use.
 
 ```yml
       - name: Install Node.js dependencies
@@ -70,16 +72,14 @@ We then need to set up Node and which version we want to use.
         working-directory: ${{ env.working-directory }}
 ```
 
-This runs the command `npm ci` in our working director.
+The following command, `npm ci`, installs project dependencies in the virtual machine.
 
 ```yml
  - name: Run lint
         run: npm run lint
         working-directory: ${{ env.working-directory }}
 ```
-Finally we run the linting.
-
-This will produce the following output when run on Github.
+Finally we run the linting, which produces the following output on GitHub.
 
 ![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
 
@@ -106,7 +106,7 @@ Now we define our test job:
       working-directory: ${{ env.working-directory }}
 ```
 
-Here you can see that we follow steps as in our linting job, this is because we need to re-setup the environment for our tests. We could have used the same job for both testing and linting but we want to seperate them to make it more clear to what fails and not when running the jobs.
+All job runs in isolation in separate virtual machines. Therefore it is necessary to re-setup our tests' environment in the testing job. We could have used the same job for both testing and linting, but we want to separate them to clarify what fails and not when running the jobs.
 
 ```yml
     - name: Run Tests
