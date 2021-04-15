@@ -24,7 +24,7 @@ Enter the directory `cd tests`{{execute}}
 Create two files `touch api.test.js request.js`{{execute}}
 
 
-<pre class="file" data-filename="./katacoda-scenarios/server/tests/api.test.js" data-target="replace">
+<pre class="file" data-filename="server/tests/request.js" data-target="replace">
 // Import the supertest module and the API server
 const request = require('supertest');
 const api = require('../src/api');
@@ -38,7 +38,7 @@ module.exports = {
 };
 </pre>
 
-<pre class="file" data-filename="katacoda-scenarios/server/tests/api.test.js" data-target="replace">
+<pre class="file" data-filename="server/tests/api.test.js" data-target="replace">
 const { createTodo, deleteTodo, getTodo } = require('./request');
 
 describe('Todo endpoints - create', () => {
