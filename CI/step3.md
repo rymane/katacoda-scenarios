@@ -4,16 +4,9 @@
 Install Jest and Supertest with npm:  
 `npm install jest supertest --save-dev`{{execute}}
 
-    "test": "jest"
+Next, click on Copy to clipboard below to define a test script in the file `package.json`.
 
-
-Next, add define a new scripts in the file `package.json`.
-
-    "scripts": {
-      ...
-      "test": "jest",
-      ...
-    },
+<pre class="file" data-filename="app.js" data-target="insert"  data-marker='"insert-test":""'>"test": "jest"</pre>
 
 We can now run `npm run test`{{execute}} to execute the tests. However, since we have not written any tests yet, the command will raise an error.
 

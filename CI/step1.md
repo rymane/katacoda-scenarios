@@ -19,7 +19,7 @@ node -v
 npm -v
 npm express -v
 ```
-If they are already installed you can jump to step 4.
+If they are already installed you can jump to step 3.
 
 #### 1. Install Node
 ```
@@ -37,20 +37,15 @@ NPM:
 > npm -v
 6.14.4
 ```
-#### 3. Install Express
 
-```
-npm install express
-```
-
-#### 4. Install the application's dependencies
+#### 3. Install the application's dependencies
 
 From the root directory of the application run:
 ```
 npm install
 ```
 
-#### 5. Run the application (locally only)
+#### 4. Run the application (locally only)
 
 If you are running the tutorial locally on your own machine you can now try to run the application by using this command:
 ```
