@@ -38,14 +38,18 @@ NPM:
 6.14.4
 ```
 
-#### 3. Install the application's dependencies
+#### 3. Enter the root of the application
+
+`cd katacoda-scenarios/server`{{execute}}
+
+#### 4. Install the application's dependencies
 
 From the root directory of the application run:
 ```
 npm install
 ```
 
-#### 4. Run the application (locally only)
+#### 5. Run the application (locally only)
 
 If you are running the tutorial locally on your own machine you can now try to run the application by using this command:
 ```
