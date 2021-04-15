@@ -7,22 +7,26 @@ In the `.github`folder create a new folder called `workflows` and there create a
 
 In this file we will specify the rules for our automatic testing and linting. We start by defining the name of our action calling it "CI" 
 
-```name: CI```
+```yml
+name: CI
+```
 
 Then we must choose on which type of Github event we want to run our action. We choose to use on all push and pull request. Here you need to choose what fits your project best. In large projects having full integration tests on every push request can take too much time to be feasible.
 
-```on: [push, pull_request]```
+```yml
+on: [push, pull_request]
+```
 
 Now we need to specify which directory in our github repository that our CI job is going to run on. We define it with:
 
-```
+```yml
 env: 
       working-directory: ./server
 ```
 
 Next is to define the jobs we want to run on each event. We start by creating our linting job.
 
-```javascript
+```yml
 jobs: 
   #linting job
   linting:
@@ -45,14 +49,14 @@ jobs:
 
 We define the job `linting` with a name, what OS it will run on and which steps is going to be performed in this job. On Github you will be able to see the status of each step in the linting job, so it is important to name each step according to its functionality. 
 
-```
+```yml
 steps: 
       - name: Chekout repository
         uses: actions/checkout@v2
 ```
 The first step in our job is to checkout the repository so our application will be downloaded to the testing environment. 
 
-```
+```yml
  - name: Use Node.js v.14
         uses: actions/setup-node@v1
         with:
@@ -60,7 +64,7 @@ The first step in our job is to checkout the repository so our application will 
 ```
 We then need to set up Node and which version we want to use.
 
-```
+```yml
       - name: Install Node.js dependencies
         run: npm ci
         working-directory: ${{ env.working-directory }}
@@ -68,7 +72,7 @@ We then need to set up Node and which version we want to use.
 
 This runs the command `npm ci` in our working director.
 
-```
+```yml
  - name: Run lint
         run: npm run lint
         working-directory: ${{ env.working-directory }}
@@ -78,3 +82,35 @@ Finally we run the linting.
 This will produce the following output when run on Github.
 
 ![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg)
+
+
+Now we define our test job:
+
+``` yml
+  # Tests job
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js v.14
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install Node.js dependencies
+      run: npm ci
+      working-directory: ${{ env.working-directory }}
+    - name: Run Tests
+      run: npm test
+      working-directory: ${{ env.working-directory }}
+```
+
+Here you can see that we follow steps as in our linting job, this is because we need to re-setup the environment for our tests. We could have used the same job for both testing and linting but we want to seperate them to make it more clear to what fails and not when running the jobs.
+
+```yml
+    - name: Run Tests
+      run: npm test
+      working-directory: ${{ env.working-directory }}
+```
+The only difference is in the last step where we run the tests instead of the linting.
