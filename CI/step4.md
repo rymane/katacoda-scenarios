@@ -6,7 +6,7 @@ Install ESLint with npm: `npm install eslint --save-dev`{{execute}}
 
 **Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started).
 
-Next, create the configuration file `.eslintrc.json` by running: `npx eslint --init`{{execute}}
+Next, create the configuration file `.eslintrc.json` in the current directory ` by running: `npx eslint --init`{{execute}}
 
 Configure the project as follows:
 
@@ -42,19 +42,19 @@ Choose Yes when prompted to install the dependency `eslint-config-google@latest`
 
 #### Running
 
-To lint all JavaScript files in the `src` directory, run: `eslint '**/*.js'`{{execute}}
+To lint all JavaScript files in the `src` directory, run: `eslint 'src/**/*.js'`{{execute}}
 
 The linter will catch a few formatting errors. Let's fix them automatically by running: 
-`eslint '**/*.js' --fix`{{execute}}
+`eslint 'src/**/*.js' --fix`{{execute}}
 
-Run `eslint '**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
+Run `eslint 'src/**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
 
 To ease lint execution, we define two new scripts in the file `package.json`.
 
     "scripts": {
       ...
-      "lint": "eslint '**/*.js'",
-      "lint:fix": "eslint '**/*.js' --fix",
+      "lint": "eslint 'src/**/*.js'",
+      "lint:fix": "eslint 'src/**/*.js' --fix",
       ...
     },
 
@@ -67,6 +67,8 @@ ESLint is highly customizable and let's you define custom rules that work alongs
     "rules": {
         "quotes": ["error", "double"]
     }
+
+**Note:** The file `.eslintrc.json` is hidden by default.
 
 The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
 
