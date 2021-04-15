@@ -23,12 +23,12 @@ npm express -v
 ```
 If they are already installed you can jump to step 4.
 
-1. Install Node
+#### 1. Install Node
 ```
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
-2. Test Node and npm
+#### 2. Test Node and npm
 Node:
 ``` 
 > node -v
@@ -39,20 +39,20 @@ NPM:
 > npm -v
 6.14.4
 ```
-3. Install Express
+#### 3. Install Express
 
 ```
 npm install express
 ```
 
-4. Install the application's dependencies
+#### 4. Install the application's dependencies
 
 From the root directory of the application run:
 ```
 npm install
 ```
 
-5. Run the application (locally only)
+#### 5. Run the application (locally only)
 
 If you are running the tutorial locally on your own machine you can now try to run the application by using this command:
 ```
