@@ -91,7 +91,7 @@ Finally we run the linting, which produces the following output on GitHub.
 #### Create Test job
 Now we define our test job:
 
-<pre><code class="yml">
+<pre><code class="yaml">
   # Tests job
   tests:
     name: Tests
