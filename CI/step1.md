@@ -18,25 +18,23 @@ If you don't already have Nodem, NPM and Express installed we first must install
 node -v
 npm -v
 npm express -v
-```
+```{{execute}}
 If they are already installed you can jump to step 3.
 
 #### 1. Install Node
 ```
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
-```
+```{{execute}}
 #### 2. Test Node and npm
 Node:
 ``` 
 > node -v
-v12.16.3
-``` 
+```{{execute}} 
 NPM:
 ```
 > npm -v
-6.14.4
-```
+```{{execute}}
 
 #### 3. Enter the root of the application
 
@@ -47,7 +45,7 @@ NPM:
 From the root directory of the application run:
 ```
 npm install
-```
+```{{execute}}
 
 #### 5. Run the application (locally only)
 
