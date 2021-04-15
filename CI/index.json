@@ -42,7 +42,8 @@
   },
   "environment": {
     "uilayout": "editor-terminal",
-    "uieditorpath": "/root/katacoda-scenarios"
+    "uieditorpath": "/root/katacoda-scenarios",
+    "hideHiddenFiles": false
   },
   "backend": {
     "imageid": "javascript"

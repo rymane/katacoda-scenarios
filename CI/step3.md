@@ -34,7 +34,7 @@ module.exports = {
 };
 </pre>
 
-##### Supertest keywords:
+##### Supertest keywords
 - `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
 
 #### Writing tests
@@ -71,13 +71,12 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
-##### Jest keywords:
-- `describe`:
-- `expect`: 
-- `it(name, fn, timeout)`: Runs a test. The first argument defines the tests name, the second is a function that contains the expectations to test, and the third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
+##### Jest keywords
+- `describe(name, fn)`: Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
+- `expect(value)`: Used to test a value. Expect should be used along with a function that assert something about the value. For instance, one could use the `toBe` function like so `expect(value).toBe(value2)` which then expect value to be equals value2.
+- `it(name, fn, timeout)`: Runs a test. The first argument defines the test's name, the second is a function that contains the expectations to test, and the third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
 
-The Jest API covers much more functionality than included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
-
+The Jest API covers much more functionality than is included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
 
 ### Mocking the data model
 
