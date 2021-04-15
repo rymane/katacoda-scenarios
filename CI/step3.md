@@ -38,7 +38,7 @@ module.exports = {
 };
 </pre>
 
-<pre class="file" data-filename="tests/api.test.js" data-target="replace">
+<pre class="file" data-filename="katacoda-scenarios/server/tests/api.test.js" data-target="replace">
 const { createTodo, deleteTodo, getTodo } = require('./request');
 
 describe('Todo endpoints - create', () => {
@@ -68,9 +68,7 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
-<pre class="file" data-filename="tests/api.test.js" data-target="append">
-const { createTodo, deleteTodo, getTodo } = require('./request');
-
+<pre class="file" data-filename="api.test.js" data-target="replace">
 describe('Todo endpoints - create', () => {
   it('add todo with valid name', async () => {
     const user = {name: 'New Todo'};
@@ -79,21 +77,6 @@ describe('Todo endpoints - create', () => {
     expect(body).toHaveProperty('id');
     expect(body).toHaveProperty('name');
     expect(body.name).toBe(user.name);
-  });
-  it('add todo with invalid characters in name', async () => {
-    const {body, statusCode} = await createTodo({name: '**/(&%#**'});
-    expect(statusCode).toEqual(400);
-    expect(body).toHaveProperty('error');
-  });
-  it('add todo with missing name', async () => {
-    const {body, statusCode} = await createTodo({});
-    expect(statusCode).toEqual(400);
-    expect(body).toHaveProperty('error');
-  });
-  it('add todo with invalid name type', async () => {
-    const {body, statusCode} = await createTodo({name: 123});
-    expect(statusCode).toEqual(400);
-    expect(body).toHaveProperty('error');
   });
 });
 </pre>
