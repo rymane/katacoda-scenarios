@@ -55,10 +55,10 @@ If you are running the tutorial locally on your own machine you can now try to r
 
 ```
 npm start
-```
+```{{execute}}
 
 or with debugging turned on:
 
 ```
 DEBUG=server:* npm start
-```
+```{{execute}}
