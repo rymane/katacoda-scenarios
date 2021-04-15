@@ -44,10 +44,10 @@ Choose Yes when prompted to install the dependency `eslint-config-google@latest`
 
 To lint all JavaScript files in the `src` directory, run: `eslint '**/*.js'`{{execute}}
 
-This should raise four formatting errors. Let's fix them automatically by running: 
+The linter will catch a few formatting errors. Let's fix them automatically by running: 
 `eslint '**/*.js' --fix`{{execute}}
 
-Run `eslint '**/*.js'`{{execute}} once again. The output is empty if no lint errors exists.
+Run `eslint '**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
 
 To ease lint execution, we define two new scripts in the file `package.json`.
 
