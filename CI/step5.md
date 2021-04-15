@@ -91,7 +91,7 @@ Finally we run the linting, which produces the following output on GitHub.
 #### Create Test job
 Now we define our test job:
 
-``` yml
+<pre>
   # Tests job
   tests:
     name: Tests
@@ -109,7 +109,7 @@ Now we define our test job:
     - name: Run Tests
       run: npm test
       working-directory: ${{ env.working-directory }}
-```
+</pre>
 
 All job runs in isolation in separate virtual machines. Therefore it is necessary to re-setup our tests' environment in the testing job. We could have used the same job for both testing and linting, but we want to separate them to clarify what fails and not when running the jobs.
 
