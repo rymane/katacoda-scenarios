@@ -6,7 +6,7 @@ Install ESLint with npm: `npm install eslint --save-dev`{{execute}}
 
 **Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started).
 
-Next, create the configuration file `.eslintrc.json` in the current directory ` by running: `npx eslint --init`{{execute}}
+Next, create the configuration file `.eslintrc.json` in the current directory by running: `npx eslint --init`{{execute}}
 
 Configure the project as follows:
 
