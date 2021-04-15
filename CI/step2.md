@@ -1,6 +1,4 @@
-### Intro to api endpoints testing with Jest and Supertest
-
-Testing API endpoints often includes testing multiple functions that span across different pieces of a web app. This kind of testing is called integration testing and will be used throughout this tutorial. We will write such tests using the JavaScript framework Jest and module Supertest.
+Testing API endpoints often includes testing multiple functions that span across various pieces of the application. This sort of testing is called integration testing and will be used throughout this tutorial. We will write such tests using the JavaScript framework Jest and module Supertest.
 
 #### Jest
 
@@ -8,10 +6,10 @@ Jest is a JavaScript testing framework that enables users to write automated tes
 
 #### Supertest
 
-Supertest is a JavaScript module that enables us to send HTTP requests to test API endpoints. It provides a high-level abstraction for testing HTTP whilst easy to use.
+Supertest is a JavaScript module that enables us to send HTTP requests to test API endpoints. It provides a high-level abstraction for testing HTTP while easy to use.
 
 #### Mocking with Jest
 
-Mocks provide the capability to abstract the behavior of a functional dependency while testing. This technique is especially useful when making HTTP calls to an API or interacting with the database layer. In this tutorial, mocking will be used to abstract the data model. Even though we only use a data model to store non persistent data, the same technique applies if a real database is apparent.
+Mocks provide the capability to abstract the behavior of a functional dependency while testing. This technique is beneficial when making HTTP calls to an API or interacting with the database layer/data model. 
 
-In order to not interact with and modify the data model while testing, we use mocking to abstract the data model. This means that http requests performed from the tests are not made to the real data model in `models/Todos.js`. Instead, we use mock data defined in the test file.
+This tutorial will utilize mocking to abstract the data model. Doing so empowers us to perform API endpoints testing without interaction with the actual data model. This means that HTTP requests from the written tests do not interact with the existing data model in `models/Todos.js`. Instead, we use mock data defined in the test file. Even though we only use a simple data model to store non-persistent data in this application, we could use the same technique then an actual database is apparent.

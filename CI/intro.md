@@ -5,7 +5,7 @@ This tutorial will go through the steps of setting up a pre-built Express applic
 #### This tutorial has the following structure:
 1. Express application overview
 2. Automated testing with `Jest` and `Supertest`
-  3. Intro to automated testing `Jest` / `Supertest`
+  3. Intro to API endpoints testing with Jest and Supertest
   4. Show how to write automated mocha tests with `Jest` / `Supertest`
 5. Static code analysis with ESLint
 6. Continous Integration with GitHub Actions
