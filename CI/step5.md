@@ -2,6 +2,7 @@ With Github Actions, we can easily set up a CI/CD environment to automate our So
 
 **Note:** The following part needs to be set up with your own Github repository. If you do not want to connect your Github to this Katacoda environment we recommend that you do this part locally on your own machine.
 
+#### Create Github action
 Start by creating a folder in `/katacoda-scenarios/` called `.github` by using the command `mkdir .github`{{execute}}.
 Change directory in to the `.github` folder: `cd .github`{{execute}}
 In the `.github` folder, create a new folder called `workflows`: `mkdir workflows`{{execute}}.
@@ -27,6 +28,7 @@ env:
       working-directory: ./server
 ```
 
+#### Create Linting job
 Next is to define the jobs we want to run at each event. We start by creating our linting job.
 
 ```yml
@@ -86,6 +88,7 @@ Finally we run the linting, which produces the following output on GitHub.
 ![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
 
 
+#### Create Test job
 Now we define our test job:
 
 ``` yml
