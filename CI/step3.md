@@ -52,7 +52,17 @@ describe('Todo endpoints - create', () => {
     expect(body).toHaveProperty('id');
     expect(body).toHaveProperty('name');
     expect(body.name).toBe(user.name);
-  });
+  });//new-tests
+});
+</pre>
+
+
+
+Add new tests....
+
+
+
+<pre class="file" data-filename="server/tests/api.test.js" data-target="insert" data-marker="//new-tests">
   it('add todo with invalid characters in name', async () => {
     const {body, statusCode} = await createTodo({name: '**/(&%#**'});
     expect(statusCode).toEqual(400);
@@ -67,9 +77,7 @@ describe('Todo endpoints - create', () => {
     const {body, statusCode} = await createTodo({name: 123});
     expect(statusCode).toEqual(400);
     expect(body).toHaveProperty('error');
-  });
-});
-</pre>
+  });</pre>
 
 ##### Jest keywords
 - `describe(name, fn)`: Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
