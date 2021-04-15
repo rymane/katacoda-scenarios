@@ -1,4 +1,4 @@
-Testing API endpoints often includes testing multiple functions that span across various pieces of the application. This sort of testing is called integration testing and will be used throughout this tutorial. We will write such tests using the JavaScript framework Jest and module Supertest.
+Testing API endpoints often includes testing multiple functions that span across various pieces of the application. This sort of testing is called integration testing and will be used throughout this tutorial. We will write such tests using the JavaScript framework Jest and the module Supertest.
 
 #### Jest
 
