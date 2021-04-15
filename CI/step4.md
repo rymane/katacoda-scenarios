@@ -4,41 +4,41 @@ ESLint is a static code analysis tool used to find bugs, programming, and code f
 
 Install ESLint with npm: `npm install eslint --save-dev`{{execute}}
 
-**Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started){target="_blank"}.
+**Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started).
 
 Next, create the configuration file `.eslintrc.json` by running: `npx eslint --init`{{execute}}
 
 Configure the project as follows:
 
     ✔ How would you like to use ESLint?
-       · style
+       -> To check syntax, find problems, and enforce code style
 
     ✔ What type of modules does your project use?
-       · commonjs
+       -> CommonJS (require/exports)
 
     ✔ Which framework does your project use?
-       · none
+       -> None of these
 
     ✔ Does your project use TypeScript?
-       · No
+       -> No
 
     ✔ Where does your code run?
-       · node
+       -> Node
 
     ✔ How would you like to define a style for your project?
-       · guide
+       -> Use a popular style guide
 
     ✔ Which style guide do you want to follow?
-       · google
+       -> Google: https://github.com/google/eslint-config-google
   
     ✔ What format do you want your config file to be in?
-       · JSON
+       -> JSON
 
 
 Choose Yes when prompted to install the dependency `eslint-config-google@latest`.
 
     ✔ Would you like to install them now with npm?
-       · Yes
+       -> Yes
 
 #### Running
 
@@ -68,6 +68,10 @@ ESLint is highly customizable and let's you define custom rules that work alongs
         "quotes": ["error", "double"]
     }
 
-The rule enforces the source code always to use double-quotes and not single-quotes. As an alternative to `error` which raises an error when not fulfilled, one could use `off` to turn the rule off or `warn` to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. The change introduces a few new errors since the source code includes a few single quotes. 
+The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
 
-Note: Before you continue, remove the newly added rule.
+As an alternative to `error` which raises an error when not fulfilled, one could use:
+- `off`: to turn the rule off
+- `warn`: to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. 
+
+**Note:** Before you continue, remove the newly added rule.
