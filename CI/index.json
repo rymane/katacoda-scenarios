@@ -42,7 +42,7 @@
   },
   "environment": {
     "uilayout": "editor-terminal",
-    "uieditorpath": "/root/katacoda-scenarios/server"
+    "uieditorpath": "/root/katacoda-scenarios"
   },
   "backend": {
     "imageid": "javascript"
