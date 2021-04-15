@@ -33,6 +33,8 @@ module.exports = {
 };
 </pre>
 
+This file defines and exports three functions which could be used to send testing requests to the servers three different API enpoints. These functions could as well have been declared in the test file, but creating a separate file and exporting these functions, keeps the supertest module interation into one place.
+
 ##### Supertest keywords
 - `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
 
