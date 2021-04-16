@@ -97,4 +97,4 @@ Click on `Copy to Editor` below to add the following three tests to the file `ap
     expect(body).toHaveProperty('error');
   });</pre>
 
-As in the first test case, the newly added tests sends POST requests to the endpoint `/api/todos`. However, these requests includes bodies with a invalid name of different kinds, invalid charachters, missing name tag and invalid name type. Since the body is invalid, we expect the `statusCode` to equal 400 and the return object to have the propertiy `error` as defined in the server.
+As in the first test case, the newly added tests send POST requests to the endpoint `/api/todos`. However, these requests include bodies with an invalid name of different kinds, invalid characters, missing name tag, and invalid name type. Since the body is invalid, we expect the `statusCode` to equal 400 and the return object to having the property `error` as defined in the server.
