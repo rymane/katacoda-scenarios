@@ -25,6 +25,8 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
+Run the tests `npm run test`{{execute}}.
+
 **Note:** There is no need to mock the data model in the other tests since the API endpoints calls responds already in the policy middleware, which means that `Todos.create` newer gets called.
 
 `jest.mock(moduleName)`- Mocks the module given as a parameter.
@@ -48,5 +50,7 @@ describe('Todo endpoints - delete', () => {
   });
 });
 </pre>
+
+Run the tests `npm run test`{{execute}}.
 
 **For the curious:** You can find even more written tests in this [GitHub repo](::TODO - add lint to the branch with all tests...::)
