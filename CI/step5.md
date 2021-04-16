@@ -132,3 +132,5 @@ Here you can see a list of all your push and pull request and the status of the 
 
 A green marker means that the tests has passed, a yellow that the tests are still conducted, and a red means that the tests has failed. Click on an instance to get more information on the tests, where it failed and so forth.
 
+The status marker can also be seen in your commit history
+![Commit status](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Commit-checkbox.jpg?raw=true)
