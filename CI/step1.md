@@ -60,3 +60,6 @@ or with debugging turned on:
 ```
 DEBUG=server:* npm start
 ```{{execute}}
+
+
+**Note:** Some of these commands used above are Linux specific, consult the official documentation for other OS support.
