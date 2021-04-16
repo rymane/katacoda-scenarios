@@ -23,15 +23,15 @@ on: [push, pull_request]
 
 Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
 
-```yml
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
 env: 
       working-directory: ./server
-```
+</pre>
 
 #### Create Linting job
 Next is to define the jobs we want to run at each event. We start by creating our linting job.
 
-```yml
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
 jobs: 
   #linting job
   linting:
@@ -50,7 +50,7 @@ jobs:
       - name: Run lint
         run: npm run lint
         working-directory: ${{ env.working-directory }}
-```
+</pre>
 
 We define the job `linting` with a name, what OS it will run on, and which steps to perform in this job. On GitHub, you will be able to see each step's status in the linting job, so it is important to name each step according to its functionality.
 
@@ -91,7 +91,7 @@ Finally we run the linting, which produces the following output on GitHub.
 #### Create Test job
 Now we define our test job:
 
-<pre><code class="yml">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
   # Tests job
   tests:
     name: Tests
