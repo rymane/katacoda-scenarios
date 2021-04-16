@@ -6,7 +6,7 @@ Install Jest and Supertest with npm:
 
 Next, click on Copy to clipboard below to define a test script in the file `package.json`.
 
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-test":""'>"test": "jest"</pre>
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-test": ""'>"test": "jest"</pre>
 
 We can now run `npm run test`{{execute}} to execute the tests. However, since we have not written any tests yet, the command will raise an error.
 
@@ -57,7 +57,7 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
-This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object to have the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
+This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object to having the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
 
 **Note:** Mocking of the data model will be added in the next step of the tutorial.
 
