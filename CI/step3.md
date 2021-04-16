@@ -33,7 +33,7 @@ module.exports = {
 };
 </pre>
 
-This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function could have been imported and used directly in the test file. However, creating a separate file adds syntactic sugar to the Supertest API and makes it easier to use. 
+This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function can be imported and used directly in the test file. However, creating a separate file adds syntactic sugar to the Supertest API and makes it easier to use. 
 
 ##### Supertest keywords
 - `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
@@ -57,15 +57,17 @@ describe('Todo endpoints - create', () => {
 });
 </pre>
 
-This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object to having the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
+Run the test `npm run test`{{execute}}.
 
-**Note:** Mocking of the data model will be added in the next step of the tutorial.
+This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object having the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
+
+**Note:** Mocking of the data model will be introduced in the next step of the tutorial.
 
 ##### Jest keywords
 
 `describe(name, fn)` - Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
 
-`expect(value)` - Used to test a value. Expect should be used along with a function that asserts something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` which then expect value to be equals value2.
+`expect(value)` - Used to test a value. Expect should be used along with a function that asserts something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` to check equality between value and value2.
 
 `it(name, fn, timeout?)` - Runs a test. The first argument defines the test's name. The second is a function that contains the expectations to test. The third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
 
@@ -97,4 +99,6 @@ Click on `Copy to Editor` below to add the following three tests to the file `ap
     expect(body).toHaveProperty('error');
   });</pre>
 
-As in the first test case, the newly added tests send POST requests to the endpoint `/api/todos`. However, these requests include bodies with an invalid name of different kinds, invalid characters, missing name tag, and invalid name type. Since the body is invalid, we expect the `statusCode` to equal 400 and the return object to having the property `error` as defined in the server.
+Run the tests `npm run test`{{execute}}.
+
+As in the first test case, the newly added tests send POST requests to the endpoint `/api/todos`. However, these requests include bodies with an invalid name of different kinds, invalid characters, missing name tag, and invalid name type. Since the body is invalid, we expect the `statusCode` to equal 400 and the return object having the property `error` as defined in the server.
