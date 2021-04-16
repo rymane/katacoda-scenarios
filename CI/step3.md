@@ -12,7 +12,6 @@ We can now run `npm run test`{{execute}} to execute the tests. However, since we
 ### Writing tests
 
 Create a test directory `mkdir tests`{{execute}}  
-Enter the directory `cd tests`{{execute}}  
 
 #### Using the Supertest module
 
