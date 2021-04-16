@@ -1,4 +1,3 @@
-
 #### Installation
 
 Install Jest and Supertest with npm:  

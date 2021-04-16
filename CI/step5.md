@@ -1,136 +1,72 @@
-With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github. 
+ESLint is a static code analysis tool used to find bugs, programming, and code formatting errors. It is built into most text editors and is suitable to run as part of the CI pipeline. The tool also offers automatic syntax-aware error fixes for many problems that automatically resolve bugs and errors.
 
-**Note:** The following part needs to be set up with your own Github repository. If you do not want to connect your Github to this Katacoda environment we recommend that you do this part locally on your own machine.
+#### Installation
 
-#### Create Github action
-Start by creating a folder in `/katacoda-scenarios/` called `.github` by using the command `mkdir .github`{{execute}}.
-Change directory in to the `.github` folder: `cd .github`{{execute}}
-In the `.github` folder, create a new folder called `workflows`: `mkdir workflows`{{execute}}.
-Change directory into the `workflows` folder: `cd workflows`{{execute}}
-Finally, create the new file called `CI.yml`: `touch CI.yml`{{execute}}.
+Install ESLint with npm: `npm install eslint --save-dev`{{execute}}
 
-In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
+**Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started).
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace"><code class="yml">
-name: CI
-</code></pre>
+Next, create the configuration file `.eslintrc.json` in the current directory by running: `npx eslint --init`{{execute}}
 
-Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
+Configure the project as follows:
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
-on: [push, pull_request]
-</code></pre>
+    ✔ How would you like to use ESLint?
+       -> To check syntax, find problems, and enforce code style
 
-Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
+    ✔ What type of modules does your project use?
+       -> CommonJS (require/exports)
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
-env: 
-      working-directory: ./server
-</code></pre>
+    ✔ Which framework does your project use?
+       -> None of these
 
-#### Create Linting job
-Next is to define the jobs we want to run at each event. We start by creating our linting job.
+    ✔ Does your project use TypeScript?
+       -> No
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
-jobs: 
-  #linting job
-  linting:
-      name: Linting
-      runs-on: ubuntu-latest
-      steps: 
-      - name: Chekout repository
-        uses: actions/checkout@v2
-      - name: Use Node.js v.14
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-      - name: Install Node.js dependencies
-        run: npm ci
-        working-directory: ${{ env.working-directory }}
-      - name: Run lint
-        run: npm run lint
-        working-directory: ${{ env.working-directory }}
-</code></pre>
+    ✔ Where does your code run?
+       -> Node
 
-We define the job `linting` with a name, what OS it will run on, and which steps to perform in this job. On GitHub, you will be able to see each step's status in the linting job, so it is important to name each step according to its functionality.
+    ✔ How would you like to define a style for your project?
+       -> Use a popular style guide
 
-```yml
-steps: 
-      - name: Chekout repository
-        uses: actions/checkout@v2
-```
-The first step in our job is to checkout the latest version of the repository in the testing environment.
-
-```yml
- - name: Use Node.js v.14
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-```
-
-We then need to set up Node and define what version to use.
-
-```yml
-      - name: Install Node.js dependencies
-        run: npm ci
-        working-directory: ${{ env.working-directory }}
-```
-
-The following command, `npm ci`, installs project dependencies in the virtual machine.
-
-```yml
- - name: Run lint
-        run: npm run lint
-        working-directory: ${{ env.working-directory }}
-```
-Finally we run the linting, which produces the following output on GitHub.
-
-![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
+    ✔ Which style guide do you want to follow?
+       -> Google: https://github.com/google/eslint-config-google
+  
+    ✔ What format do you want your config file to be in?
+       -> JSON
 
 
-#### Create Test job
-Now we define our test job:
+Choose Yes when prompted to install the dependency `eslint-config-google@latest`.
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
-  # Tests job
-  tests:
-    name: Tests
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Use Node.js v.14
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14'
-    - name: Install Node.js dependencies
-      run: npm ci
-      working-directory: ${{ env.working-directory }}
-    - name: Run Tests
-      run: npm test
-      working-directory: ${{ env.working-directory }}
-</code></pre>
+    ✔ Would you like to install them now with npm?
+       -> Yes
 
-All job runs in isolation in separate virtual machines. Therefore it is necessary to re-setup our tests' environment in the testing job. We could have used the same job for both testing and linting, but we want to separate them to clarify what fails and not when running the jobs.
+#### Running
 
-```yml
-    - name: Run Tests
-      run: npm test
-      working-directory: ${{ env.working-directory }}
-```
-The only difference is in the last step where we run the tests instead of the linting.
+To lint all JavaScript files in the `src` directory, run: `eslint 'src/**/*.js'`{{execute}}
 
+The linter will catch a few formatting errors. Let's fix them automatically by running: 
+`eslint 'src/**/*.js' --fix`{{execute}}
 
-The final step is to push the file to your Github repository and it will automaticly start working. You can try pushing dummy changes to your project to see the status of the automatic tests.
+Run `eslint 'src/**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
+To ease lint execution, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts.
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":""'>
+"lint": "eslint 'src/**/*.js'",
+    "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
 
-To see the status of your Github actions go to the action tab on your Github project.
-![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Action-bar.jpg?raw=true)
+We can now run `npm run lint`{{execute}} to lint and `npm run lint:fix`{{execute}} to lint and automatically fix errors.
 
-Here you can see a list of all your push and pull request and the status of the automatic testing that has been done on these.
+#### Custom rules (optional)
 
-![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Actions-workflow.jpg?raw=true)
+ESLint is highly customizable and let's you define custom rules that work alongside the built-in rules. Create a custom rule by updating the `rules` tag in the config file `.eslintrc.json` with the following content. This could be done manually or by clicking on `Copy to Editor` below.
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"rules": {'>
+"rules": { "quotes": ["error", "double"]</pre>
 
-A green marker means that the tests has passed, a yellow that the tests are still conducted, and a red means that the tests has failed. Click on an instance to get more information on the tests, where it failed and so forth.
+**Note:** The file `.eslintrc.json` is hidden by default.
 
-The status marker can also be seen in your commit history
-![Commit status](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Commit-checkbox.jpg?raw=true)
+The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
+
+As an alternative to `error` which raises an error when not fulfilled, one could use:
+- `off`: to turn the rule off
+- `warn`: to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. 
+
+**Note:** Before you continue, remove the newly added rule.

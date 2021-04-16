@@ -6,6 +6,7 @@ This tutorial will go through the steps of setting up a pre-built Express applic
 1. Express application overview
 2. Introduction to API endpoints testing with Jest and Supertest
 3. Automated integration testing for API endpoints with Jest and Supertest
-4. Static code analysis with ESLint
-5. Continous Integration with GitHub Actions
-6. Show how to run automated tests and linting in a CI workflow using GitHub Actions
+4. Mocking the data model
+5. Static code analysis with ESLint
+6. Continous Integration with GitHub Actions
+7. Show how to run automated tests and linting in a CI workflow using GitHub Actions

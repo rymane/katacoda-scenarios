@@ -2,7 +2,7 @@
   "title": "CI workflow using GitHub actions for Node.js, Express app, Jest and Eslint",
   "description": "Automated testing with jest. Linting wth Eslint. CI with GitHub Actions.",
   "difficulty": "Beginner",
-  "time": "60 min",
+  "time": "20 min",
   "details": {
     "steps": [
       {
@@ -18,16 +18,20 @@
         "text": "step3.md"
       },
       {
-        "title": "Static code analysis with ESLint",
+        "title": "Mocking the data model",
         "text": "step4.md"
       },
       {
-        "title": "Continous Integration with GitHub Actions",
+        "title": "Static code analysis with ESLint",
         "text": "step5.md"
       },
       {
-        "title": "Show how to run automated tests and linting in a CI workflow using GitHub Actions",
+        "title": "Continous Integration with GitHub Actions",
         "text": "step6.md"
+      },
+      {
+        "title": "Show how to run automated tests and linting in a CI workflow using GitHub Actions",
+        "text": "step7.md"
       }
     ],
     "intro": {
