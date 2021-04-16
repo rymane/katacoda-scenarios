@@ -11,27 +11,27 @@ Finally, create the new file called `CI.yml`: `touch CI.yml`{{execute}}.
 
 In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace"><code class="yml">
 name: CI
-</pre>
+</code></pre>
 
 Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
 on: [push, pull_request]
-</pre>
+</code></pre>
 
 Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
 env: 
       working-directory: ./server
-</pre>
+</code></pre>
 
 #### Create Linting job
 Next is to define the jobs we want to run at each event. We start by creating our linting job.
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
 jobs: 
   #linting job
   linting:
@@ -50,7 +50,7 @@ jobs:
       - name: Run lint
         run: npm run lint
         working-directory: ${{ env.working-directory }}
-</pre>
+</code></pre>
 
 We define the job `linting` with a name, what OS it will run on, and which steps to perform in this job. On GitHub, you will be able to see each step's status in the linting job, so it is important to name each step according to its functionality.
 
