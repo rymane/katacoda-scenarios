@@ -13,7 +13,7 @@ The project includes the following files:
 **NOTE:** If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here.](https://github.com/nwessman/katacoda-scenarios/tree/express-app) If you decide to follow along locally you get the advantage of being able to access the api (via the browser etc.) and as well set up the github actions in the last step.
 
 ### Installation
-If you don't already have Nodem, NPM and Express installed we first must install them. You can check if you have them installed by running the following three commands in the terminal:
+If you don't already have Node, NPM and Express installed we first must install them. You can check if you have them installed by running the following three commands in the terminal:
 ```
 node -v
 npm -v

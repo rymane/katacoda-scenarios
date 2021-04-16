@@ -17,7 +17,7 @@ Enter the directory `cd tests`{{execute}}
 
 #### Using the Supertest module
 
-Click on `Copy to Editor` below to add the file `request.js` with the following content to the newly created test directory:
+Click on `Copy to Editor` below to add the file `request.js` with the following content to the test directory:
 
 <pre class="file" data-filename="server/tests/request.js" data-target="replace">
 // Import the supertest module and the API server
@@ -33,12 +33,12 @@ module.exports = {
 };
 </pre>
 
-This file defines and exports three functions which could be used to send testing requests to the servers three different API enpoints. These functions could as well have been declared in the test file, but creating a separate file and exporting these functions, keeps the supertest module interation into one place.
+This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function could have been imported and used directly in the test file. However, creating a separate file adds syntactic sugar to the Supertest API and makes it easier to use. 
 
 ##### Supertest keywords
 - `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
 
-#### Writing tests
+#### Now let's create our first test!
 
 Click on `Copy to Editor` below to add the file `api.test.js` with the following content to the test directory:
 
@@ -51,27 +51,34 @@ describe('Todo endpoints - create', () => {
     const {body, statusCode} = await createTodo(user);
     expect(statusCode).toEqual(201);
     expect(body).toHaveProperty('id');
-    expect(body).toHaveProperty('name');
-    expect(body.name).toBe(user.name);
+    expect(body).toHaveProperty('name', user.name);
   });
 //new-tests
 });
 </pre>
 
+This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object to have the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
+
+**Note:** Mocking of the data model will be added in the next step of the tutorial.
+
 ##### Jest keywords
+
 `describe(name, fn)` - Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
 
-`expect(value)` - Used to test a value. Expect should be used along with a function that assert something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` which then expect value to be equals value2.
+`expect(value)` - Used to test a value. Expect should be used along with a function that asserts something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` which then expect value to be equals value2.
 
-`it(name, fn, timeout)` - Runs a test. The first argument defines the test's name, the second is a function that contains the expectations to test, and the third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
+`it(name, fn, timeout?)` - Runs a test. The first argument defines the test's name. The second is a function that contains the expectations to test. The third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
+
+`toHaveProperty(keyPath, value?)` - Used to check if a property at the provided reference `keyPath` exists for an object.
+The second (optional) argument can be used to compare the received property value.
+
+`toEqual(value)` - Used to compare all properties of object instances (checks deep equality).
 
 The Jest API covers much more functionality than is included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
 
+#### Let's write som more tests!
 
-
-Add new tests....
-
-
+Click on `Copy to Editor` below to add the following three tests to the file `api.test.js`. You can also manually copy the content and paste it where the comment `//new-tests` is located.
 
 <pre class="file" data-filename="server/tests/api.test.js" data-target="insert" data-marker="//new-tests">
   it('add todo with invalid characters in name', async () => {
@@ -90,8 +97,4 @@ Add new tests....
     expect(body).toHaveProperty('error');
   });</pre>
 
-### Mocking the data model
-
-jest.mock('../src/models/Todos');
-await Todos.add.mockResolvedValue(mockUser);
-const {body, statusCode} = await req.createTodo({name: mockUser.name});
+As in the first test case, the newly added tests sends POST requests to the endpoint `/api/todos`. However, these requests includes bodies with a invalid name of different kinds, invalid charachters, missing name tag and invalid name type. Since the body is invalid, we expect the `statusCode` to equal 400 and the return object to have the propertiy `error` as defined in the server.
