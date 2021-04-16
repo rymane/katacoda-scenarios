@@ -17,9 +17,9 @@ name: CI
 
 Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
 
-```yml
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="append">
 on: [push, pull_request]
-```
+</pre>
 
 Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
 
