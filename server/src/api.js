@@ -10,19 +10,16 @@ api.use(express.json());
 
 // Defines the applications API endpoints
 api.post('/api/todos',
-  TodoPolicy.validateName,
-  TodoController.create);
-
-api.get('/api/todos',
-  TodoController.index);
+    TodoPolicy.validateName,
+    TodoController.create);
 
 api.get('/api/todos/:id',
-  TodoPolicy.validateID,
-  TodoController.show);
+    TodoPolicy.validateID,
+    TodoController.get);
 
 api.delete('/api/todos/:id',
-  TodoPolicy.validateID,
-  TodoController.delete);
+    TodoPolicy.validateID,
+    TodoController.delete);
 
 // Export the application
 module.exports = api;
