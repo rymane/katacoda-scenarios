@@ -7,35 +7,35 @@
     "steps": [
       {
         "title": "Before you start",
-        "text": "step0.md"
-      },
-      {
-        "title": "Express application overview and set up",
         "text": "step1.md"
       },
       {
-        "title": "Introduction to API endpoints testing with Jest and Supertest",
+        "title": "Express application overview and set up",
         "text": "step2.md"
       },
       {
-        "title": "Automated integration testing for API endpoints with Jest and Supertest",
+        "title": "Introduction to API endpoints testing with Jest and Supertest",
         "text": "step3.md"
       },
       {
-        "title": "Mocking the data model",
+        "title": "Automated integration testing for API endpoints with Jest and Supertest",
         "text": "step4.md"
       },
       {
-        "title": "Static code analysis with ESLint",
+        "title": "Mocking the data model",
         "text": "step5.md"
       },
       {
-        "title": "Continous Integration with GitHub Actions",
+        "title": "Static code analysis with ESLint",
         "text": "step6.md"
       },
       {
-        "title": "Show how to run automated tests and linting in a CI workflow using GitHub Actions",
+        "title": "Continous Integration with GitHub Actions",
         "text": "step7.md"
+      },
+      {
+        "title": "Show how to run automated tests and linting in a CI workflow using GitHub Actions",
+        "text": "step8.md"
       }
     ],
     "intro": {

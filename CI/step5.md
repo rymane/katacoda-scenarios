@@ -1,81 +1,56 @@
-ESLint is a static code analysis tool used to find bugs, programming, and code formatting errors. It is built into most text editors and is suitable to run as part of the CI pipeline. The tool also offers automatic syntax-aware error fixes for many problems that automatically resolve bugs and errors.
+Until now, we have written tests that interact directly with the data model. If we used a persistent database, we would have modified actual data while testing, which is not sufficient. One way to solve this is to create a separate database for testing. However, interacting with a cloud-based database while testing might take too much time, and the tests might fail due to connection errors. Here is where mocks come in. It simply lets us write stable tests that abstract the database layer dependency. It's now time to include mocks in our tests, to abstract.
 
-#### Installation
+#### Mocks in Jest
+To mock the database model, we must first import the module we want to mock, then mock the module by calling `jest.mock()`, and finally add a mocking function before each API endpoint call. This tutorial will use the mocking function `mockReturnValue(value)` to mock API endpoint calls' return value.
 
-Install ESLint with npm: `npm install eslint --save-dev`{{execute}}. Make sure that you are in the `server` folder before running this command.
+**Note:** The Jest API covers much more functionality for mocks than is included in this tutorial. Explore the [Jest documentation - Mock Functions](https://jestjs.io/docs/mock-function-api#mockfnmockreturnvaluevalue) if you are curious.
 
-**Note:** Installation could also be performed with `yarn`, [more information](https://eslint.org/docs/user-guide/getting-started).
+Let's replicate the first test that we wrote in the previous step. Click on `Copy to Editor` below to add the file `api-mock.test.js` with the following content to the test directory:
 
-Next, create the configuration file `.eslintrc.json` in the current directory by running: `npx eslint --init`{{execute}}
+<pre class="file" data-filename="server/tests/api-mock.test.js" data-target="replace">
+const Todos = require('../src/models/Todos');
+const {createTodo, deleteTodo, getTodo} = require('./request');
 
-Configure the project as follows:
+jest.mock('../src/models/Todos');
 
-    ✔ How would you like to use ESLint?
-       -> To check syntax, find problems, and enforce code style
+describe('Todo endpoints - create', () => {
+  it('add todo with valid name', async () => {
+    const mockTodo = {id: 2, name: 'First Todo'};
+    Todos.create.mockReturnValue(mockTodo);
+    const {body, statusCode} = await createTodo({name: mockTodo.name});
+    expect(statusCode).toEqual(201);
+    expect(body).toHaveProperty('id');
+    expect(body).toHaveProperty('name', mockTodo.name);
+  });
+});
+</pre>
 
-    ✔ What type of modules does your project use?
-       -> CommonJS (require/exports)
+Run the tests `npm run test`{{execute}}.
 
-    ✔ Which framework does your project use?
-       -> None of these
+**Note:** There is no need to mock the data model in the other tests since the API endpoints calls responds already in the policy middleware, which means that `Todos.create` newer gets called.
 
-    ✔ Does your project use TypeScript?
-       -> No
+`jest.mock(moduleName)`- Mocks the module given as a parameter.
 
-    ✔ Where does your code run?
-       -> Node
+`mockFn.mockReturnValue(value)` - Takes an argument `value` which will be returned whenever the mock function `mockFn` is called. This function assumes that the mocked function is synchronous, which all calls to our data model are. However, if a persistent database is used, these calls will often be asynchronous. In that case, one must use the mocking function `mockResolvedValue(value)` instead, which is useful to mock asynchronous functions in asynchronous tests.
 
-    ✔ How would you like to define a style for your project?
-       -> Use a popular style guide
+#### Lets add some more mocked tests
 
-    ✔ Which style guide do you want to follow?
-       -> Google: https://github.com/google/eslint-config-google
-  
-    ✔ What format do you want your config file to be in?
-       -> JSON
+<pre class="file" data-filename="server/tests/api-mock.test.js" data-target="append">
+describe('Todo endpoints - delete', () => {
+  it('delete todo with valid id', async () => {
+    const mockTodo = {id: 0, name: 'First todo'};
+    Todos.delete.mockReturnValue(true);
+    const {statusCode} = await deleteTodo(mockTodo.id);
+    expect(statusCode).toEqual(204);
+  });
+  it('delete todo with non existing todo id', async () => {
+    Todos.delete.mockReturnValue(false);
+    const {statusCode} = await deleteTodo(-1);
+    expect(statusCode).toEqual(404);
+  });
+});
+</pre>
 
+Run the tests `npm run test`{{execute}}.
 
-Choose Yes when prompted to install the dependency `eslint-config-google@latest`.
-
-    ✔ Would you like to install them now with npm?
-       -> Yes
-
-#### Running
-
-To ease linting, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts.
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":""'>
-"lint": "eslint 'src/**/*.js'",
-    "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
-
-We can now run `npm run lint`{{execute}} to lint all files in the `src` directory and `npm run lint:fix`{{execute}} to also automatically fix errors.
-
-Run: `npm run lint`{{execute}}
-
-The linter will catch a few formatting errors. Let's fix them automatically by running: 
-`npm run lint:fix`{{execute}}
-
-Run `npm run lint`{{execute}} once again to check that the errors have been resolved.
-
-#### Custom rules (optional)
-
-ESLint is highly customizable and let's you define custom rules that work alongside the built-in rules. Create a custom rule by updating the `rules` tag in the config file `.eslintrc.json` with the following content. This could be done manually or by clicking on `Copy to Editor` below.
-<pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": {
-    }'>
-"rules": { "quotes": ["error", "double"] }</pre>
-
-**Note:** The file `.eslintrc.json` is hidden by default.
-
-As an alternative to `error` which raises an error when not fulfilled, one could use:
-- `off`: to turn the rule off
-- `warn`: to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. 
-
-The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
-
-Run `npm run lint`{{execute}}, the see the introduced error.
-
-Fix the errors `npm run lint:fix`{{execute}}
-
-Click on `Copy to Editor` below to remove the newly added rule.
-
-<pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": { "quotes": ["error", "double"] }'>
-"rules": { }</pre>
+**For the curious:** You can find even more written tests in this [GitHub repo](::TODO - add lint to the branch with all tests...::)
