@@ -6,7 +6,11 @@
   "details": {
     "steps": [
       {
-        "title": "Express application overview",
+        "title": "Before you start",
+        "text": "step0.md"
+      },
+      {
+        "title": "Express application overview and set up",
         "text": "step1.md"
       },
       {
