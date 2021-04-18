@@ -64,10 +64,6 @@ ESLint is highly customizable and let's you define custom rules that work alongs
 
 **Note:** The file `.eslintrc.json` is hidden by default.
 
-As an alternative to `error` which raises an error when not fulfilled, one could use:
-- `off`: to turn the rule off
-- `warn`: to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. 
-
 The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
 
 Run `npm run lint`{{execute}}, the see the introduced error.
@@ -78,3 +74,5 @@ Click on `Copy to Editor` below to remove the newly added rule.
 
 <pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": { "quotes": ["error", "double"] }'>
 "rules": { }</pre>
+
+Reset to single quotes `npm run lint:fix`{{execute}}

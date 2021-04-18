@@ -1,10 +1,8 @@
-**Note:** The following part needs to be set up with your own Github repository. If you do not want to connect your Github to this Katacoda environment we recommend that you do this part locally on your own machine.
-
-#### Create Github action
 <!-- !!""
 Intro till .github 
 och workflows, varför de behövs och heter som de heter..
 "" -->
+
 Enter the root directory `/katacoda-scenarios/` by `cd ..`{{execute}}  
 Create and enter the `.github` directory `mkdir .github; cd .github`{{execute}}  
 Create and enter the `workflows` directory `mkdir workflows; cd workflows`{{execute}}  
@@ -12,22 +10,20 @@ Create a GitHub Action file: `touch CI.yml`{{execute}}.
 
 In this file, we will specify the rules for our automatic testing and linting. We start by defining the name of our action, calling it `CI`.
 
-<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace"><code class="yml">
-name: CI
-</code></pre>
+**Note:** The directory `.github` is hidden by default.
+
+<pre class="file" data-filename=".github/workflows/CI.yml" data-target="replace"><code class="yml">name: CI</code></pre>
 
 Then we must choose which type of GitHub event we want to run our action. We activate the GitHub Action on all push and pull requests, but this could be configured to fit your project needs. For instance, complete integration tests on every push request can take too much time to be feasible for large projects.
 
 <pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
-on: [push, pull_request]
-</code></pre>
+on: [push, pull_request]</code></pre>
 
 Now we need to specify which directory in our GitHub repository that our CI job will run on. We define it with:
 
 <pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
 env: 
-      working-directory: ./server
-</code></pre>
+  working-directory: ./server</code></pre>
 
 #### Create Linting job
 Next is to define the jobs we want to run at each event. We start by creating our linting job.
@@ -36,61 +32,65 @@ Next is to define the jobs we want to run at each event. We start by creating ou
 jobs: 
   #linting job
   linting:
-      name: Linting
-      runs-on: ubuntu-latest
-      steps: 
-      - name: Chekout repository
-        uses: actions/checkout@v2
-      - name: Use Node.js v.14
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-      - name: Install Node.js dependencies
-        run: npm ci
-        working-directory: ${{ env.working-directory }}
-      - name: Run lint
-        run: npm run lint
-        working-directory: ${{ env.working-directory }}
+    name: Linting
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Chekout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js v.14
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install Node.js dependencies
+      run: npm ci
+      working-directory: ${{ env.working-directory }}
+    - name: Run lint
+      run: npm run lint
+      working-directory: ${{ env.working-directory }}
 </code></pre>
 
 We define the job `linting` with a name, what OS it will run on, and which steps to perform in this job. On GitHub, you will be able to see each step's status in the linting job, so it is important to name each step according to its functionality.
 
-```yml
-steps: 
-      - name: Chekout repository
-        uses: actions/checkout@v2
-```
 The first step in our job is to checkout the latest version of the repository in the testing environment.
 
 ```yml
- - name: Use Node.js v.14
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
+    steps: 
+    - name: Chekout repository
+      uses: actions/checkout@v2
 ```
 
-We then need to set up Node and define what version to use.
+The second step, defines an set up the Node version to use.
 
 ```yml
-      - name: Install Node.js dependencies
-        run: npm ci
-        working-directory: ${{ env.working-directory }}
+    - name: Use Node.js v.14
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
 ```
 
-The following command, `npm ci`, installs project dependencies in the virtual machine.
+The third step installs project dependencies in the virtual machine.
 
 ```yml
- - name: Run lint
-        run: npm run lint
-        working-directory: ${{ env.working-directory }}
+    - name: Install Node.js dependencies
+      run: npm ci
+      working-directory: ${{ env.working-directory }}
 ```
-Finally we run the linting, which produces the following output on GitHub.
+
+The last step, runs the code analysis.
+
+```yml
+    - name: Run lint
+      run: npm run lint
+      working-directory: ${{ env.working-directory }}
+```
+
+This action produce the following output on GitHub:
 
 ![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
 
 
-#### Create Test job
-Now we define our test job:
+#### Create Testing job
+It's now time to define our testing job.
 
 <pre class="file" data-filename=".github/workflows/CI.yml" data-target="append"><code class="yml">
   # Tests job
@@ -112,26 +112,14 @@ Now we define our test job:
       working-directory: ${{ env.working-directory }}
 </code></pre>
 
-All job runs in isolation in separate virtual machines. Therefore it is necessary to re-setup our tests' environment in the testing job. We could have used the same job for both testing and linting, but we want to separate them to clarify what fails and not when running the jobs.
+The only difference is in the last step where we run the tests instead of the linting.
 
 ```yml
     - name: Run Tests
       run: npm test
       working-directory: ${{ env.working-directory }}
 ```
-The only difference is in the last step where we run the tests instead of the linting.
 
+**Note:** All GitHub job runs in isolation in separate virtual machines. It is, therefore, necessary to re-setup our tests' environment for the testing job. One could use the same job for both testing and linting, but this implies that the second job won't run if the first job fails. Hence, separating them allows us to run both jobs either way. Also, each isolated job creates its own GitHub status checks flag. Separating the jobs so on creates a more convenient output.
 
 The final step is to push the file to your Github repository and it will automaticly start working. You can try pushing dummy changes to your project to see the status of the automatic tests, this will be shown in the next step.
-
-To see the status of your Github actions go to the action tab on your Github project.
-![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Action-bar.jpg?raw=true)
-
-Here you can see a list of all your push and pull request and the status of the automatic testing that has been done on these.
-
-![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Actions-workflow.jpg?raw=true)
-
-A green marker means that the tests has passed, a yellow that the tests are still conducted, and a red means that the tests has failed. Click on an instance to get more information on the tests, where it failed and so forth.
-
-The status marker can also be seen in your commit history
-![Commit status](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Commit-checkbox.jpg?raw=true)

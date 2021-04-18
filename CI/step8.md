@@ -1,3 +1,5 @@
+**Note:** The following part needs to be set up with your own Github repository. If you do not want to connect your Github to this Katacoda environment we recommend that you do this part locally on your own machine.
+
 To see the status of your Github actions go to the action tab on your Github project.
 ![Github action tab](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Action-bar.jpg?raw=true)
 
