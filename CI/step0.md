@@ -2,7 +2,7 @@ If you want to follow allong the tutorial on your own computer instead of in the
 
 **Note:** You will not be able to do Step 7: Github actions if you do not run this locally. However, you can proceed with the tutorial until step 7 and fork the complete project at that point, including everything implemented in step 1-6.
 
-### Installation (Locally only)
+### Node installation (Locally only)
 
 **Note:** This step is only required if you want to run the project locally, proceed to the next step if you continue on Katacoda.
 

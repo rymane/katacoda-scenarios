@@ -12,13 +12,6 @@ The project includes the following files:
 
 ### Project set up
 
-#### 1. Enter the root of the application
+Enter the root of the application `cd katacoda-scenarios/server`{{execute}}
 
-`cd katacoda-scenarios/server`{{execute}}
-
-#### 2. Install the application's dependencies
-
-From the root directory of the application run:
-```
-npm install
-```{{execute}}
+Install project dependencies `npm install`{{execute}}
