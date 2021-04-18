@@ -1,5 +1,7 @@
 # Todo Express App
 
+**This branch includes the full project, including linting, tests and the GitHub Action.**
+
 This application is a simple Express server, serving a `TODO-list` REST api with 3 API-endpoints.
 The user of this application can simply get, add and delete todos with basic HTTP requests defined in `api.js`.
 
