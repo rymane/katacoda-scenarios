@@ -1,9 +1,11 @@
+<!-- META TEXT TESTING... -->
+
 #### Installation
 
 Install Jest and Supertest with npm:  
 `npm install jest supertest --save-dev`{{execute}}
 
-Next, click on `Copy to clipboard` below to define a test script in the file `package.json`.
+Next, click on `Copy to clipboard` below to define a test script in the file `package.json`. If you want to do this manually, replace `insert-test":""` with `"test": "jest"` in the same file.
 
 <pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-test":""'>"test": "jest"</pre>
 
@@ -15,7 +17,7 @@ Create a test directory `mkdir tests`{{execute}}
 
 #### Using the Supertest module
 
-Click on `Copy to Editor` below to add the file `request.js` with the following content to the test directory:
+Click on `Copy to Editor` below to add the file `request.js` with the following content to the tests directory:
 
 <pre class="file" data-filename="server/tests/request.js" data-target="replace">
 // Import the supertest module and the API server
@@ -38,7 +40,7 @@ This file defines and exports three functions that could be used to send request
 
 #### Now let's create our first test!
 
-Click on `Copy to Editor` below to add the file `api.test.js` with the following content to the test directory:
+Click on `Copy to Editor` below to add the file `api.test.js` with the following content to the tests directory:
 
 <pre class="file" data-filename="server/tests/api.test.js" data-target="replace">
 const { createTodo, deleteTodo, getTodo } = require('./request');
@@ -63,22 +65,22 @@ This test sends a POST request to the endpoint `/api/todos`, including a body wi
 
 ##### Jest keywords
 
-`describe(name, fn)` - Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
+- `describe(name, fn)`: Groups together several related tests. The first argument defines the group's name, and the second is a function including tests.
 
-`expect(value)` - Used to test a value. Expect should be used along with a function that asserts something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` to check equality between value and value2.
+- `expect(value)`: Used to test a value. Expect should be used along with a function that asserts something about the value. For instance, one could use the `toEqual` function like so `expect(value).toEqual(value2)` to check equality between value and value2.
 
-`it(name, fn, timeout?)` - Runs a test. The first argument defines the test's name. The second is a function that contains the expectations to test. The third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
+- `it(name, fn, timeout?)`: Runs a test. The first argument defines the test's name. The second is a function that contains the expectations to test. The third (optional) is a timeout, specifying how long to wait before aborting (default: 5 milliseconds).
 
-`toHaveProperty(keyPath, value?)` - Used to check if a property at the provided reference `keyPath` exists for an object.
+- `toHaveProperty(keyPath, value?)`: Used to check if a property at the provided reference `keyPath` exists for an object.
 The second (optional) argument can be used to compare the received property value.
 
-`toEqual(value)` - Used to compare all properties of object instances (checks deep equality).
+- `toEqual(value)`: Used to compare all properties of object instances (checks deep equality).
 
 The Jest API covers much more functionality than is included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
 
 #### Let's write som more tests!
 
-Click on `Copy to Editor` below to add the following three tests to the file `api.test.js`. You can also manually copy the content and paste it where the comment `//new-tests` is located.
+Click on `Copy to Editor` below to add the following three tests to the file `api.test.js`. You can also do this manually by copying the content and paste it where the comment `//new-tests` is located.
 
 <pre class="file" data-filename="server/tests/api.test.js" data-target="insert" data-marker="//new-tests">
   it('add todo with invalid characters in name', async () => {

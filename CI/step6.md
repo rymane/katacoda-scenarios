@@ -1,4 +1,4 @@
-ESLint is a static code analysis tool used to find bugs, programming, and code formatting errors. It is built into most text editors and is suitable to run as part of the CI pipeline. The tool also offers automatic syntax-aware error fixes for many problems that automatically resolve bugs and errors.
+<!-- META TEXT LINT... -->
 
 #### Installation
 
@@ -42,14 +42,13 @@ Choose Yes when prompted to install the dependency `eslint-config-google@latest`
 
 #### Running
 
-To ease linting, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts.
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":""'>
+To ease linting, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts. If you want to do this manually, replace `insert-lint":""` with the content below in the same file.
+
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint": ""'>
 "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
 
-We can now run `npm run lint`{{execute}} to lint all files in the `src` directory and `npm run lint:fix`{{execute}} to also automatically fix errors.
-
-Run: `npm run lint`{{execute}}
+Run: `npm run lint`{{execute}} to lint all files in the `src` directory.
 
 The linter will catch a few formatting errors. Let's fix them automatically by running: 
 `npm run lint:fix`{{execute}}

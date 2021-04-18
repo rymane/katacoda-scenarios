@@ -27,7 +27,7 @@ describe('Todo endpoints - create', () => {
 
 Run the tests `npm run test`{{execute}}.
 
-**Note:** There is no need to mock the data model in the other tests since the API endpoints calls responds already in the policy middleware, which means that `Todos.create` newer gets called.
+**Note:** There is no need to mock the data model in the other tests we created in the previous step. This is because the API responses are sent in the policy middleware, which means that `Todos.create` newer gets called.
 
 `jest.mock(moduleName)`- Mocks the module given as a parameter.
 
