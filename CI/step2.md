@@ -1,17 +1,31 @@
-The application used in this tutorial is a simple Express server, serving a `TODO-list` REST api with 3 api-endpoints.
-The user of this application can simply get, add and delete todos with basic HTTP requests.
-The project includes the following files:
+If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo before cloning since step 8 requires you to have permission to push to the repository. The source code of the project resides in the branch `express-app`.
 
-- `api.js`: Creates the server and define its endpoints, including the actions to be called for each endpoint.
-- `index.js`: The entry point for the application. Simply starts the server.
-- `controllers/TodoController.js`: Request controller, exports functions that interact with the todo-list model.
-- `models/Todos.js`: Defines the todo-list model with the actions `add`, `delete`, and `get`.
-- `policies/TodoPolicy.js`: Validates input of the requests. This file exports two functions `validateID` and `validateName`, used in `api.js`.
+**Note:** You will not be able to do step 8: Testing the GitHub Action if you do not run this locally. However, you can proceed with the tutorial until step 8 and fork the complete project at that point, including everything implemented in step 1-7.
 
-![Express app file structure](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/express-app-structure.JPG?raw=true)
+### Node installation (Locally only)
 
-### Project set up
+**Note:** This step is only required if you want to run the project locally, proceed to the next step if you continue on Katacoda.
 
-Enter the root of the application `cd katacoda-scenarios/server`{{execute}}
+If you don't already have Node and NPM installed we first must install them. You can check if you have them installed by running the following three commands in the terminal (Linux):
+```
+node -v
+npm -v
+```{{execute}}
+If they are already installed you can jump to step 3.
 
-Install project dependencies `npm install`{{execute}}
+#### 1. Install Node
+```
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```{{execute}}
+#### 2. Test Node and npm
+Node:
+``` 
+> node -v
+```{{execute}} 
+NPM:
+```
+> npm -v
+```{{execute}}
+
+**Note:** Some of these commands used above are Linux specific, consult the [official documentation](https://nodejs.org/en/download/) for other OS support.

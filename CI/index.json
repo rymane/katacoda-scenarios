@@ -6,19 +6,19 @@
   "details": {
     "steps": [
       {
-        "title": "Before you start",
+        "title": "Introduction",
         "text": "step1.md"
       },
       {
-        "title": "Express application overview and set up",
+        "title": "Before you start",
         "text": "step2.md"
       },
       {
-        "title": "Introduction to API endpoints testing with Jest and Supertest",
+        "title": "Express application overview and set up",
         "text": "step3.md"
       },
       {
-        "title": "Automated integration testing for API endpoints with Jest and Supertest",
+        "title": "Automated API endpoints testing with Jest and Supertest",
         "text": "step4.md"
       },
       {
@@ -34,7 +34,7 @@
         "text": "step7.md"
       },
       {
-        "title": "Show how to run automated tests and linting in a CI workflow using GitHub Actions",
+        "title": "Testing the GitHub Action",
         "text": "step8.md"
       }
     ],

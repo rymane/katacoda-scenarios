@@ -45,11 +45,11 @@ const { createTodo, deleteTodo, getTodo } = require('./request');
 
 describe('Todo endpoints - create', () => {
   it('add todo with valid name', async () => {
-    const user = {name: 'New Todo'};
-    const {body, statusCode} = await createTodo(user);
+    const todo = {name: 'New Todo'};
+    const {body, statusCode} = await createTodo(todo);
     expect(statusCode).toEqual(201);
     expect(body).toHaveProperty('id');
-    expect(body).toHaveProperty('name', user.name);
+    expect(body).toHaveProperty('name', todo.name);
   });
 //new-tests
 });

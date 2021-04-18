@@ -1,31 +1,23 @@
-If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo before cloning since step 7 requires you to have permission to push to the repository. The source code of the project resides in the branch `express-app`.
+This step will introduce GitHub Actions, and Automated integration testing in JavaScript using Jest and Supertest. If you already are familiar with these concepts, you can jump to the next step.
 
-**Note:** You will not be able to do Step 7: Github actions if you do not run this locally. However, you can proceed with the tutorial until step 7 and fork the complete project at that point, including everything implemented in step 1-6.
+#### Github Actions
 
-### Node installation (Locally only)
+Github Actions is a tool that can run automated scripts on specific events on Github like push or pull requests. With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github.
 
-**Note:** This step is only required if you want to run the project locally, proceed to the next step if you continue on Katacoda.
+#### Integration testing in Javascript
 
-If you don't already have Node and NPM installed we first must install them. You can check if you have them installed by running the following three commands in the terminal (Linux):
-```
-node -v
-npm -v
-```{{execute}}
-If they are already installed you can jump to step 3.
+Testing API endpoints often includes testing multiple functions that span across various pieces of the application. This sort of testing is called integration testing and will be used throughout this tutorial. We will write such tests using the JavaScript framework Jest and the module Supertest.
 
-#### 1. Install Node
-```
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```{{execute}}
-#### 2. Test Node and npm
-Node:
-``` 
-> node -v
-```{{execute}} 
-NPM:
-```
-> npm -v
-```{{execute}}
+##### Jest
 
-**Note:** Some of these commands used above are Linux specific, consult the [official documentation](https://nodejs.org/en/download/) for other OS support.
+Jest is a JavaScript testing framework that enables users to write automated tests for JavaScript projects. The framework has had great success because of its minimal demands on configuration and its extensive and well-documented API. Jest is compatible with several well-known JavaScript frameworks such as TypeScript, Node, React, Angular and Vue.
+
+##### Supertest
+
+Supertest is a JavaScript module that enables us to send HTTP requests to test API endpoints. It provides a high-level abstraction for testing HTTP while easy to use.
+
+##### Mocking with Jest
+
+Mocks provide the capability to abstract the behavior of a functional dependency while testing. This technique is beneficial when making HTTP calls to an API or interacting with the database layer/data model. 
+
+This tutorial will utilize mocking to abstract the data model. Doing so empowers us to perform API endpoints testing without interaction with the actual data model. This means that HTTP requests from the written tests do not interact with the existing data model in `models/Todos.js`. Instead, we use mock data defined in the test file. Even though we only use a simple data model to store non-persistent data in this application, we could use the same technique when an actual database is apparent.
