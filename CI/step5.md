@@ -42,18 +42,19 @@ Choose Yes when prompted to install the dependency `eslint-config-google@latest`
 
 #### Running
 
-To lint all JavaScript files in the `src` directory, run: `eslint 'src/**/*.js'`{{execute}}
-
-The linter will catch a few formatting errors. Let's fix them automatically by running: 
-`eslint 'src/**/*.js' --fix`{{execute}}
-
-Run `eslint 'src/**/*.js'`{{execute}} once again to check that the errors have been resolved. The output is empty if no lint errors exists.
-To ease lint execution, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts.
+To ease linting, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts.
 <pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint": ""'>
 "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
 
-We can now run `npm run lint`{{execute}} to lint and `npm run lint:fix`{{execute}} to lint and automatically fix errors.
+We can now run `npm run lint`{{execute}} to lint all files in the `src` directory and `npm run lint:fix`{{execute}} to also automatically fix errors.
+
+Run: `npm run lint`{{execute}}
+
+The linter will catch a few formatting errors. Let's fix them automatically by running: 
+`npm run lint:fix`{{execute}}
+
+Run `npm run lint`{{execute}} once again to check that the errors have been resolved.
 
 #### Custom rules (optional)
 
@@ -64,10 +65,17 @@ ESLint is highly customizable and let's you define custom rules that work alongs
 
 **Note:** The file `.eslintrc.json` is hidden by default.
 
-The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
-
 As an alternative to `error` which raises an error when not fulfilled, one could use:
 - `off`: to turn the rule off
 - `warn`: to turn the rule as a warning. In contrast to `error`, `warn` does not change the exit code. 
 
-**Note:** Before you continue, remove the newly added rule.
+The rule enforces the source code always to use double-quotes and not single-quotes. The change introduces a few new errors since the source code includes a few single quotes.
+
+Run `npm run lint`{{execute}}, the see the introduced error.
+
+Fix the errors `npm run lint:fix`{{execute}}
+
+Click on `Copy to Editor` below to remove the newly added rule.
+
+<pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": { "quotes": ["error", "double"] }'>
+"rules": { }</pre>
