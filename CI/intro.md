@@ -12,3 +12,4 @@ This tutorial will go through the steps of setting up a pre-built Express applic
 5. Mocking the data model
 6. Static code analysis with ESLint
 7. Continous Integration with GitHub Actions
+8. Testing the GitHub Action
