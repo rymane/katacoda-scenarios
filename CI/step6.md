@@ -44,7 +44,7 @@ Choose Yes when prompted to install the dependency `eslint-config-google@latest`
 
 To ease linting, we define two new scripts in the file `package.json`. Click on `Copy to Editor` below to add the scripts. If you want to do this manually, replace `insert-lint":""` with the content below in the same file.
 
-<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint": ""'>
+<pre class="file" data-filename="server/package.json" data-target="insert" data-marker='"insert-lint":""'>
 "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix"</pre>
 

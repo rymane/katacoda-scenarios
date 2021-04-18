@@ -1,6 +1,6 @@
 **Note:** The part can only be done on your local machine. If you have done the previous steps on Katacoda, it's now time to fork and clone [this repo](https://github.com/nwessman/katacoda-scenarios/tree/express-app-complete).
 
-Make sure to fork the repo before cloning since *Step: 8* requires you to have permission to push to the repository. The source code of the full project, including the code implemented in steps 1-7, resides in the branch `express-app-complete`.
+Make sure to fork the repo before cloning since *step: 8* requires you to have permission to push to the repository. The source code of the full project, including the code implemented in steps 1-7, resides in the branch `express-app-complete`.
 
 The final step is to push the file to your Github repository and it will automatically start working. You can try pushing dummy changes to your project to see the status of the automatic tests. For instance, by changing a comment in the file `index.js`.
 

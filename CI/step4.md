@@ -33,7 +33,7 @@ module.exports = {
 };
 </pre>
 
-This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function can be imported and used directly in the test file. However, creating a separate file adds syntactic sugar to the Supertest API and makes it easier to use. 
+This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function can be imported and used directly in the test file. However, creating a separate file adds syntactic sugar for the methods we use in the Supertest API, which makes it easier to use. 
 
 ##### Supertest keywords
 - `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
