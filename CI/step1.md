@@ -1,12 +1,12 @@
-If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo before cloning since step 8 requires you to have permission to push to the repository. The source code of the project resides in the branch `express-app`.
+If you want to follow along with the tutorial on your computer instead of in the Katacoda sandbox, you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo before cloning since step 8 requires you to have permission to push to the repository. The source code of the project resides in the branch `express-app`.
 
 **Note:** You will not be able to do *step 8: Testing the GitHub Action* if you do not run this locally. However, you can proceed with the tutorial until *step 8* and fork the complete project at that point, including everything implemented in *step 1-7*.
 
-### Node installation (Locally only)
+#### Node installation (Locally only)
 
-**Note:** This step is only required if you want to run the project locally, proceed to the next step if you continue on Katacoda.
+**Note:** This step is only required if you want to run the project locally; proceed to the next step if you continue on Katacoda.
 
-If you don't already have Node and NPM installed we first must install them. You can check if you have them installed by running the following three commands in the terminal (Linux):
+Start by installing Node and NPM, if not already installed. You can check if you have them installed by running the following three commands in the terminal (Linux):
 ```
 node -v
 npm -v
@@ -28,4 +28,4 @@ NPM:
 > npm -v
 ```{{execute}}
 
-**Note:** Some of these commands used above are Linux specific, consult the [official documentation](https://nodejs.org/en/download/) for other OS support.
+**Note:** Some of these commands used above are Linux-specific. Consult the [official documentation](https://nodejs.org/en/download/) for other OS support.

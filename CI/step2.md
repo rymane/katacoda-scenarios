@@ -2,7 +2,7 @@
 
 #### Github Actions
 
-Github Actions is a tool that can run automated scripts on specific events on Github like push or pull requests. With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github. In this tutorial, we will cover how to set up a CI workflow but GitHub Actions could as well be used for Continuous Deployment (CD).
+Github Actions is a tool that can run automated scripts on specific events on Github like push or pull requests. With Github Actions, we can easily set up a CI/CD environment to automate our Software workflow by building, testing, and deploying our code right in Github. In this tutorial, we will cover how to set up a CI workflow, but GitHub Actions could as well be used for Continuous Deployment (CD).
 
 #### Integration testing in Javascript
 

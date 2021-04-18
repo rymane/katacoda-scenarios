@@ -8,7 +8,7 @@ The project includes the following files:
 - `models/Todos.js`: Defines the todo-list model with the actions `add`, `delete`, and `get`.
 - `policies/TodoPolicy.js`: Validates input of the requests. This file exports two functions `validateID` and `validateName`, used in `api.js`.
 
-### Project set up
+#### Project set up
 
 Enter the root of the application `cd katacoda-scenarios/server`{{execute}}
 

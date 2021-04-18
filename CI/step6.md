@@ -75,4 +75,4 @@ Click on `Copy to Editor` below to remove the newly added rule.
 <pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": { "quotes": ["error", "double"] }'>
 "rules": { }</pre>
 
-Reset to single quotes `npm run lint:fix`{{execute}}
+Reset the soruce code to use single quotes `npm run lint:fix`{{execute}}

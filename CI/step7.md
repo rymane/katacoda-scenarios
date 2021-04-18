@@ -1,9 +1,4 @@
-<!-- !!""
-Intro till .github 
-och workflows, varför de behövs och heter som de heter..
-"" -->
-
-Github Actions is defined in YAML files that must be stored in a directory called `.github/workflows`. These files defines on which type of git event what type of job is run and which steps this job consists of.
+Github Actions are specified in YAML files that must be stored in a directory called `.github/workflows`, located in the root directory.
 
 #### Setup
 Enter the root directory `/katacoda-scenarios/` by `cd ..`{{execute}}  
@@ -124,5 +119,3 @@ The only difference is in the last step where we run the tests instead of the li
 ```
 
 **Note:** All GitHub job runs in isolation in separate virtual machines. It is, therefore, necessary to re-setup our tests' environment for the testing job. One could use the same job for both testing and linting, but this implies that the second job won't run if the first job fails. Hence, separating them allows us to run both jobs either way. Also, each isolated job creates its own GitHub status checks flag. Separating the jobs so on creates a more convenient output.
-
-The final step is to push the file to your Github repository and it will automaticly start working. You can try pushing dummy changes to your project to see the status of the automatic tests, this will be shown in the next step.

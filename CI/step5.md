@@ -27,11 +27,11 @@ describe('Todo endpoints - create', () => {
 
 Run the tests `npm run test`{{execute}}.
 
-**Note:** There is no need to mock the data model in the other tests we created in the previous step. This is because the API responses are sent in the policy middleware, which means that `Todos.create` newer gets called.
+**Note:** There is no need to mock the data model in the other tests we created in the previous step. This is because the API responses are sent in the policy middleware, which means that `Todos.create` never gets called.
 
 `jest.mock(moduleName)`- Mocks the module given as a parameter.
 
-`mockFn.mockReturnValue(value)` - Takes an argument `value` which will be returned whenever the mock function `mockFn` is called. This function assumes that the mocked function is synchronous, which all calls to our data model are. However, if a persistent database is used, these calls will often be asynchronous. In that case, one must use the mocking function `mockResolvedValue(value)` instead, which is useful to mock asynchronous functions in asynchronous tests.
+`mockFn.mockReturnValue(value)` - Takes an argument `value` which will be returned whenever the mock function `mockFn` is called. This function assumes that the mocked function is synchronous, which all calls to our data model are. However, if a persistent database is used, these calls will often be asynchronous. In that case, one must use the mocking function `mockResolvedValue(value)` instead, which is useful to mock asynchronous functions.
 
 #### Lets add some more mocked tests
 

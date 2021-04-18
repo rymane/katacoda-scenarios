@@ -11,7 +11,7 @@ Next, click on `Copy to clipboard` below to define a test script in the file `pa
 
 We can now run `npm run test`{{execute}} to execute the tests. However, since we have not written any tests yet, the command will raise an error.
 
-### Writing tests
+#### Writing tests
 
 Create a test directory `mkdir tests`{{execute}}  
 
