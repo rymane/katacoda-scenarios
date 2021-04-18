@@ -1,9 +1,11 @@
-If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo and clone the fork since step 7 requires you to have permission to push to the repository. If you decide to follow along locally you get the advantage of being able to access the API (via the browser/postman etc.) as well set up the github actions in the last step.
+If you want to follow allong the tutorial on your own computer instead of in the Katacoda sandbox you can find the code for the Express application [here](https://github.com/nwessman/katacoda-scenarios/tree/express-app). If you do this, make sure to fork the repo before cloning since step 7 requires you to have permission to push to the repository. The source code of the project resides in the branch `express-app`.
 
 **Note:** You will not be able to do Step 7: Github actions if you do not run this locally. However, you can proceed with the tutorial until step 7 and fork the complete project at that point, including everything implemented in step 1-6.
 
 ### Installation (Locally only)
-**Note:** This step is only required if you want to run the project locally.
+
+**Note:** This step is only required if you want to run the project locally, proceed to the next step if you continue on Katacoda.
+
 If you don't already have Node and NPM installed we first must install them. You can check if you have them installed by running the following three commands in the terminal (Linux):
 ```
 node -v
