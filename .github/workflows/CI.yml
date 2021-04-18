@@ -1,0 +1,39 @@
+name: CI
+on: [push, pull_request]
+env: 
+  working-directory: ./server
+jobs: 
+  #linting job
+  linting:
+      name: Linting
+      runs-on: ubuntu-latest
+      steps: 
+      - name: Chekout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js v.14
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install Node.js dependencies
+        run: npm ci
+        working-directory: ${{ env.working-directory }}
+      - name: Run lint
+        run: npm run lint
+        working-directory: ${{ env.working-directory }}
+  # Tests job
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js v.14
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install Node.js dependencies
+      run: npm ci
+      working-directory: ${{ env.working-directory }}
+    - name: Run Tests
+      run: npm test
+      working-directory: ${{ env.working-directory }}
