@@ -33,12 +33,12 @@ module.exports = {
 };
 </pre>
 
-This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function can be imported and used directly in the test file. However, creating a separate file adds syntactic sugar for the methods we use in the Supertest API, which makes it easier to use. 
+This file defines and exports three functions that could be used to send requests to the server's three different API endpoints while testing. The Supertest module and its request function can be imported and used directly in the test file. However, creating a separate file adds syntactic sugar for the methods we use from the Supertest API, making it easier to use. 
 
 ##### Supertest keywords
-- `request`: A function used to make HTTP requests while testing. It takes a server as argument, and returns an object which could be used to send HTTP requests to the server given as an argument.
+- `request`: A function used to make HTTP requests while testing. It takes a server as an argument and returns an object, used to send HTTP requests to the server given as an argument.
 
-#### Now let's create our first test!
+#### Now, let's create our first test!
 
 Click on `Copy to Editor` below to add the file `api.test.js` with the following content to the tests directory:
 
@@ -61,7 +61,7 @@ Run the test `npm run test`{{execute}}.
 
 This test sends a POST request to the endpoint `/api/todos`, including a body with a valid name. Since the name is valid, we expect the `statusCode` to equal 201 and the return object having the properties `id` and `name`, where the `name` should have the same valid as sent in the request.
 
-**Note:** Mocking of the data model will be introduced in the next step of the tutorial.
+**Note:** We will introduce data model mocking in the next step of the tutorial.
 
 ##### Jest keywords
 
@@ -78,7 +78,7 @@ The second (optional) argument can be used to compare the received property valu
 
 The Jest API covers much more functionality than is included in this tutorial. Explore the [Jest documentation](https://jestjs.io/docs/api) if you are curious.
 
-#### Let's write som more tests!
+#### Let's write some more tests!
 
 Click on `Copy to Editor` below to add the following three tests to the file `api.test.js`. You can also do this manually by copying the content and paste it where the comment `//new-tests` is located.
 

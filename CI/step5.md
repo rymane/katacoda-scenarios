@@ -27,13 +27,13 @@ describe('Todo endpoints - create', () => {
 
 Run the tests `npm run test`{{execute}}.
 
-**Note:** There is no need to mock the data model in the other tests we created in the previous step. This is because the API responses are sent in the policy middleware, which means that `Todos.create` never gets called.
+**Note:** There is no need to mock the data model in the other tests we created in the previous step since the policy middleware sends the HTTP responses in these cases, which means that `Todos.create` never gets called.
 
 `jest.mock(moduleName)`- Mocks the module given as a parameter.
 
-`mockFn.mockReturnValue(value)` - Takes an argument `value` which will be returned whenever the mock function `mockFn` is called. This function assumes that the mocked function is synchronous, which all calls to our data model are. However, if a persistent database is used, these calls will often be asynchronous. In that case, one must use the mocking function `mockResolvedValue(value)` instead, which is useful to mock asynchronous functions.
+`mockFn.mockReturnValue(value)` - Takes an argument `value` which will be returned whenever the mock function `mockFn` is called. This function assumes that the mocked function is synchronous, which all calls to our data model are. However, these calls are asynchronous while using a persistent database. In that case, one must use the mocking function `mockResolvedValue(value)` instead, which is useful to mock asynchronous functions.
 
-#### Lets add some more mocked tests
+#### Let's add some more mocked tests
 
 <pre class="file" data-filename="server/tests/api-mock.test.js" data-target="append">
 describe('Todo endpoints - delete', () => {
@@ -53,4 +53,4 @@ describe('Todo endpoints - delete', () => {
 
 Run the tests `npm run test`{{execute}}.
 
-**For the curious:** You can find even more written tests in the GitHub repo at the branch [express-app-complete](https://github.com/nwessman/katacoda-scenarios/tree/express-app-complete). This branch includes the full project used in this tutorial, including linting, tests and the GitHub Action.
+**For the curious:** You can find even more written tests in the GitHub repo at the branch [express-app-complete](https://github.com/nwessman/katacoda-scenarios/tree/express-app-complete). This branch includes the complete project used in this tutorial, including linting, tests, and the GitHub Action.

@@ -33,7 +33,7 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps: 
-    - name: Chekout repository
+    - name: Checkout repository
       uses: actions/checkout@v2
     - name: Use Node.js v.14
       uses: actions/setup-node@v1
@@ -53,11 +53,11 @@ The first step in our job is to checkout the latest version of the repository in
 
 ```yml
     steps: 
-    - name: Chekout repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 ```
 
-The second step, defines an set up the Node version to use.
+The second step defines and set up the Node version to use.
 
 ```yml
     - name: Use Node.js v.14
@@ -74,7 +74,7 @@ The third step installs project dependencies in the virtual machine.
       working-directory: ${{ env.working-directory }}
 ```
 
-The last step, runs the code analysis.
+The last step runs the code analysis.
 
 ```yml
     - name: Run lint
@@ -82,7 +82,7 @@ The last step, runs the code analysis.
       working-directory: ${{ env.working-directory }}
 ```
 
-This action produce the following output on GitHub:
+This action produces the following output on GitHub:
 
 ![Linting Output](https://github.com/nwessman/katacoda-scenarios/blob/main/CI/assets/Linting-output.jpg?raw=true)
 
@@ -110,7 +110,7 @@ It's now time to define our testing job.
       working-directory: ${{ env.working-directory }}
 </code></pre>
 
-The only difference is in the last step where we run the tests instead of the linting.
+The only difference is in the last step, where we run the tests instead of the linting.
 
 ```yml
     - name: Run Tests
@@ -118,4 +118,4 @@ The only difference is in the last step where we run the tests instead of the li
       working-directory: ${{ env.working-directory }}
 ```
 
-**Note:** All GitHub job runs in isolation in separate virtual machines. It is, therefore, necessary to re-setup our tests' environment for the testing job. One could use the same job for both testing and linting, but this implies that the second job won't run if the first job fails. Hence, separating them allows us to run both jobs either way. Also, each isolated job creates its own GitHub status checks flag. Separating the jobs so on creates a more convenient output.
+**Note:** All GitHub job runs in isolation in separate virtual machines. It is, therefore, necessary to re-set up our tests' environment for the testing job. One could use the same job for both testing and linting, but this implies that the second job won't run if the first job fails. Hence, separating them allows us to run both jobs either way. Also, each isolated job creates its GitHub status checks flag. Separating the jobs so on creates a more convenient output.

@@ -1,4 +1,4 @@
-The next step is to incorporate static code analysis in our project to mitigate syntax errors or problems with formating. As stated in the introduction, this will be performed with ESLint.
+The next step is to incorporate static code analysis in our project to mitigate syntax errors or problems with formatting. As stated in the introduction, this will be performed with ESLint.
 
 #### Installation
 
@@ -57,7 +57,7 @@ Run `npm run lint`{{execute}} once again to check that the errors have been reso
 
 #### Custom rules (optional)
 
-ESLint is highly customizable and let's you define custom rules that work alongside the built-in rules. Create a custom rule by updating the `rules` tag in the config file `.eslintrc.json` with the following content. This could be done manually or by clicking on `Copy to Editor` below.
+ESLint is highly customizable and lets you define custom rules that work alongside the built-in rules. Create a custom rule by updating the `rules` tag in the config file `.eslintrc.json` with the following content. This could be done manually or by clicking on `Copy to Editor` below.
 <pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": {
     }'>
 "rules": { "quotes": ["error", "double"] }</pre>
@@ -75,4 +75,4 @@ Click on `Copy to Editor` below to remove the newly added rule.
 <pre class="file" data-filename="server/.eslintrc.json" data-target="insert" data-marker='"rules": { "quotes": ["error", "double"] }'>
 "rules": { }</pre>
 
-Reset the soruce code to use single quotes `npm run lint:fix`{{execute}}
+Reset the source code to use single quotes `npm run lint:fix`{{execute}}
