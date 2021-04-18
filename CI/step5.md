@@ -53,4 +53,4 @@ describe('Todo endpoints - delete', () => {
 
 Run the tests `npm run test`{{execute}}.
 
-**For the curious:** You can find even more written tests in this [GitHub repo](::TODO - add lint to the branch with all tests...::)
+**For the curious:** You can find even more written tests in the GitHub repo at the branch [express-app-complete](https://github.com/nwessman/katacoda-scenarios/tree/express-app-complete). This branch includes the full project used in this tutorial, including linting, tests and the GitHub Action.

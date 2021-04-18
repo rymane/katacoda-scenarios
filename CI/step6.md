@@ -1,6 +1,4 @@
-<!-- META TEXT LINT... -->
-The next step is to incorporate static code analysis in our project to mitigate syntax errors or problems with formating. 
-
+The next step is to incorporate static code analysis in our project to mitigate syntax errors or problems with formating. As stated in the introduction, this will be performed with ESLint.
 
 #### Installation
 
