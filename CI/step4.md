@@ -1,4 +1,5 @@
 <!-- META TEXT TESTING... -->
+Now we want to configure tests that will assert the correctness of our program using Jest and Supertest, which we then will be able to run using a simple command. 
 
 #### Installation
 

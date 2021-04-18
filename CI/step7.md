@@ -3,6 +3,8 @@ Intro till .github
 och workflows, varför de behövs och heter som de heter..
 "" -->
 
+Github Actions is defined in YAML files that must be stored in a directory called `.github/workflows`. These files defines on which type of git event what type of job is run and which steps this job consists of.
+
 Enter the root directory `/katacoda-scenarios/` by `cd ..`{{execute}}  
 Create and enter the `.github` directory `mkdir .github; cd .github`{{execute}}  
 Create and enter the `workflows` directory `mkdir workflows; cd workflows`{{execute}}  
