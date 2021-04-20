@@ -8,7 +8,7 @@ jobs:
       name: Linting
       runs-on: ubuntu-latest
       steps: 
-      - name: Chekout repository
+      - name: Checkout repository
         uses: actions/checkout@v2
       - name: Use Node.js v.14
         uses: actions/setup-node@v1
