@@ -17,3 +17,5 @@ The project includes the following files:
 Enter the root of the application `cd katacoda-scenarios/server`
 
 Install project dependencies `npm install`
+
+
